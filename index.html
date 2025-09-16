@@ -11,6 +11,7 @@
       --card:#ffffff;
       --muted:#666;
     }
+
     * { box-sizing:border-box }
     body {
       font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -18,58 +19,46 @@
       background:var(--bg);
       color:#111;
     }
+
     .container { max-width:1100px; margin:0 auto; padding:28px }
-    header { display:flex; gap:18px; align-items:center; padding:18px 0 }
+
+    header { display:flex; flex-direction:column; gap:20px; align-items:center; padding:28px 0; text-align:center }
     .avatar {
-      width:120px;
-      height:120px;
+      width:160px;
+      height:160px;
       border-radius:50%;
       overflow:hidden;
       border:4px solid #fff;
-      box-shadow:0 6px 20px rgba(11,120,209,.1);
-      flex-shrink:0;
+      box-shadow:0 6px 20px rgba(11,120,209,.2);
     }
     .avatar img { width:100%; height:100%; object-fit:cover }
-    h1 { margin:0; font-size:28px }
-    p.lead { margin:6px 0 0; color:var(--muted) }
-    .bio {
-      margin-top:10px;
-      max-width:600px;
-      line-height:1.5;
-      color:var(--muted);
-    }
 
-    .hero { display:flex; gap:24px; align-items:center }
-    .section { margin-top:28px }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px }
+    h1 { margin:12px 0 6px; font-size:32px }
+    p.lead { margin:0 0 12px; color:var(--muted); line-height:1.5; max-width:800px }
 
+    .section { margin-top:40px }
     .card {
       background:var(--card);
-      padding:16px;
+      padding:20px;
       border-radius:12px;
       box-shadow:0 6px 18px rgba(12,18,36,.04);
     }
-    .project-title { display:flex; justify-content:space-between; align-items:center }
+    .project-title { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px }
     .meta { font-size:13px; color:var(--muted) }
     .project-body { margin-top:12px }
     .project-body ul { padding-left:18px; margin:6px 0 }
-    .thumbs {
-      display:flex;
-      gap:10px;
-      margin-top:12px;
-    }
     .thumb {
-      flex:1;
-      height:140px;
+      width:100%;
+      height:200px;
       background:#eef5fb;
       border-radius:8px;
       display:flex;
       align-items:center;
       justify-content:center;
       color:#9db9d9;
-      font-size:12px;
+      margin-top:10px;
     }
-    .links { margin-top:10px }
+    .links { margin-top:12px }
     .links a {
       display:inline-block;
       margin-right:8px;
@@ -78,10 +67,11 @@
       text-decoration:none;
       border:1px solid #e6eef8;
       font-size:13px;
+      color:var(--accent);
     }
 
     footer { margin:40px 0; padding:20px; text-align:center; color:var(--muted) }
-    .contact { display:flex; gap:12px; align-items:center; justify-content:center }
+    .contact { display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap }
     .btn {
       background:var(--accent);
       color:#fff;
@@ -91,63 +81,66 @@
       font-weight:600;
     }
 
-    @media (max-width:640px) {
-      .hero { flex-direction:column; align-items:flex-start }
-      .avatar { width:100px; height:100px }
-      .thumbs { flex-direction:column }
+    /* Projects stacked vertically */
+    #projects-list { display:flex; flex-direction:column; gap:20px; }
+
+    /* responsive tweaks */
+    @media (max-width:640px){
+      header { padding:20px }
+      .avatar { width:120px; height:120px }
+      h1 { font-size:28px }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Profile Section -->
     <header>
-      <div class="hero">
-        <div class="avatar">
-          <img src="images/a.jpg" alt="Athiramol PS">
-        </div>
-        <div>
-          <h1>Athiramol PS</h1>
-          <p class="lead">Data Analyst</p>
-          <p class="bio">
-            Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
-          </p>
-        </div>
+      <div class="avatar">
+        <img src="images/a.jpg" alt="Athiramol PS">
       </div>
+      <h1>Athiramol PS</h1>
+      <p class="lead">
+        Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
+      </p>
     </header>
 
+    <!-- Python Portfolio Section -->
     <main>
       <section id="projects" class="section">
-        <h2>Python Projects</h2>
-
-        <div class="grid" id="projects-grid">
-          <!-- Repeatable Python Project Template -->
-          <!-- Project 1 -->
+        <h2>Portfolio — Python Projects</h2>
+        <div id="projects-list">
+          <!-- Repeat this article block for each project, 1 → 10 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>1. Sales Forecasting</strong>
+              <strong>1. Python — Sales Forecasting</strong>
               <span class="meta">Python • Pandas • Prophet</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Forecast next 6 months of sales</li></ul>
-
+              <ul>
+                <li>Provide monthly sales forecast for next 6 months</li>
+                <li>Allow scenario testing by region</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Achieve accuracy &lt;10% error</li></ul>
-
+              <ul>
+                <li>Accurate baseline forecast (MAPE &lt; 10%)</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Data cleaning, feature engineering, model validation</li></ul>
-
+              <ul>
+                <li>Data cleaning &amp; enrichment</li>
+                <li>Feature engineering (promo flags, seasonality)</li>
+                <li>Model selection &amp; validation</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Automated forecasting pipeline using Prophet</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Built pipeline in Python using pandas &amp; Prophet; model retrains weekly.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -155,30 +148,33 @@
           <!-- Project 2 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>2. Customer Segmentation</strong>
-              <span class="meta">Python • Scikit-learn</span>
+              <strong>2. Python — Customer Segmentation</strong>
+              <span class="meta">Python • Scikit-learn • KMeans</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Identify customer groups for marketing</li></ul>
-
+              <ul>
+                <li>Identify high-value customer groups</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Cluster customers into 4–5 groups</li></ul>
-
+              <ul>
+                <li>Enable targeted marketing campaigns</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>K-means clustering on RFM metrics</li></ul>
-
+              <ul>
+                <li>RFM analysis</li>
+                <li>Clustering with KMeans</li>
+                <li>Validation using silhouette score</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Delivered actionable customer segments</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Defined 4 distinct customer groups with actionable insights.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -186,30 +182,33 @@
           <!-- Project 3 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>3. Churn Prediction</strong>
-              <span class="meta">Python • Logistic Regression</span>
+              <strong>3. Python — Churn Prediction</strong>
+              <span class="meta">Python • Scikit-learn</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Predict likelihood of customer churn</li></ul>
-
+              <ul>
+                <li>Predict which customers are likely to churn</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Recall score above 80%</li></ul>
-
+              <ul>
+                <li>Reduce customer churn by 10%</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Feature engineering, train-test split, model tuning</li></ul>
-
+              <ul>
+                <li>Data preprocessing</li>
+                <li>Feature selection</li>
+                <li>Classification models</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Built churn prediction model with actionable insights</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Built model with 85% accuracy and provided actionable insights for retention.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -217,30 +216,32 @@
           <!-- Project 4 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>4. Sentiment Analysis</strong>
-              <span class="meta">Python • NLP • NLTK</span>
+              <strong>4. Python — Market Basket Analysis</strong>
+              <span class="meta">Python • MLxtend • Apriori</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Analyze customer reviews</li></ul>
-
+              <ul>
+                <li>Identify product associations in transaction data</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Classify positive vs negative feedback</li></ul>
-
+              <ul>
+                <li>Increase cross-sell opportunities</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Text preprocessing, tokenization, sentiment scoring</li></ul>
-
+              <ul>
+                <li>Transaction preprocessing</li>
+                <li>Association rule mining using Apriori</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Dashboard with sentiment trends</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Generated actionable rules for promotions and product bundling.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -248,30 +249,32 @@
           <!-- Project 5 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>5. Fraud Detection</strong>
-              <span class="meta">Python • Random Forest</span>
+              <strong>5. Python — Sentiment Analysis</strong>
+              <span class="meta">Python • NLTK • Vader</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Detect fraudulent transactions</li></ul>
-
+              <ul>
+                <li>Analyze customer reviews for sentiment</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Precision &gt; 85%</li></ul>
-
+              <ul>
+                <li>Provide insights for product improvement</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Resampling, feature scaling, model training</li></ul>
-
+              <ul>
+                <li>Text preprocessing</li>
+                <li>Sentiment scoring using Vader</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>High-accuracy fraud detection pipeline</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Generated sentiment trends and recommendations for management.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -279,30 +282,32 @@
           <!-- Project 6 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>6. Stock Price Prediction</strong>
-              <span class="meta">Python • LSTM</span>
+              <strong>6. Python — Inventory Optimization</strong>
+              <span class="meta">Python • Pandas • NumPy</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Forecast stock prices</li></ul>
-
+              <ul>
+                <li>Optimize inventory levels based on historical sales</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Model with RMSE &lt; 5%</li></ul>
-
+              <ul>
+                <li>Reduce stockouts and overstock</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Time series preprocessing, deep learning model</li></ul>
-
+              <ul>
+                <li>Data cleaning & analysis</li>
+                <li>Forecast demand per SKU</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>LSTM neural network for predictions</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Implemented forecasting model to recommend optimal stock levels.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -310,30 +315,32 @@
           <!-- Project 7 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>7. Healthcare Analytics</strong>
-              <span class="meta">Python • Pandas • Matplotlib</span>
+              <strong>7. Python — Web Scraping</strong>
+              <span class="meta">Python • BeautifulSoup • Requests</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Analyze patient admission trends</li></ul>
-
+              <ul>
+                <li>Collect competitor pricing and product data from websites</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Identify seasonal patterns</li></ul>
-
+              <ul>
+                <li>Enable data-driven pricing strategy</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Data cleaning, visualizations, insights</li></ul>
-
+              <ul>
+                <li>Build scraping scripts with BeautifulSoup</li>
+                <li>Data cleaning & storage</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Interactive analysis dashboards</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Automated collection and storage of competitor data weekly.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -341,30 +348,32 @@
           <!-- Project 8 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>8. E-commerce Insights</strong>
-              <span class="meta">Python • SQLAlchemy</span>
+              <strong>8. Python — KPI Dashboard Automation</strong>
+              <span class="meta">Python • Pandas • Matplotlib</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Analyze order and product sales data</li></ul>
-
+              <ul>
+                <li>Automate KPI dashboard updates for management</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Identify best-selling products</li></ul>
-
+              <ul>
+                <li>Reduce manual reporting time</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>SQL queries, Python integration, reporting</li></ul>
-
+              <ul>
+                <li>Data extraction & transformation</li>
+                <li>Visualization automation using Matplotlib</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Automated product performance dashboard</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Automated script updates dashboards daily for executive review.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -372,30 +381,32 @@
           <!-- Project 9 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>9. Supply Chain Optimization</strong>
-              <span class="meta">Python • Linear Programming</span>
+              <strong>9. Python — Time Series Analysis</strong>
+              <span class="meta">Python • Pandas • Prophet</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Optimize transportation costs</li></ul>
-
+              <ul>
+                <li>Analyze sales trends over multiple years</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Reduce costs by 15%</li></ul>
-
+              <ul>
+                <li>Provide insights into seasonal patterns</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Build optimization model</li></ul>
-
+              <ul>
+                <li>Aggregate historical sales data</li>
+                <li>Time series modeling with Prophet</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Efficient resource allocation strategy</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Generated seasonal forecasts and identified peak sales periods.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
@@ -403,54 +414,49 @@
           <!-- Project 10 -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>10. Dashboard Automation</strong>
-              <span class="meta">Python • Plotly • Dash</span>
+              <strong>10. Python — Automated Reporting</strong>
+              <span class="meta">Python • Pandas • Jupyter</span>
             </div>
             <div class="project-body">
               <p class="meta">Business requirements</p>
-              <ul><li>Build real-time business dashboard</li></ul>
-
+              <ul>
+                <li>Automate weekly reports for management</li>
+              </ul>
               <p class="meta">Goals</p>
-              <ul><li>Interactive and auto-updating dashboard</li></ul>
-
+              <ul>
+                <li>Save time and reduce errors in manual reporting</li>
+              </ul>
               <p class="meta">Analysis Steps</p>
-              <ul><li>Data pipeline setup, dashboard design</li></ul>
-
+              <ul>
+                <li>Data extraction, cleaning, and summarization</li>
+                <li>Automated generation of visualizations</li>
+              </ul>
               <p class="meta">Solution</p>
-              <ul><li>Dynamic dashboards deployed with Dash</li></ul>
-
-              <div class="thumbs">
-                <div class="thumb">Image 1</div>
-                <div class="thumb">Image 2</div>
-              </div>
-
+              <ul>
+                <li>Python scripts generate weekly reports and export to PDF automatically.</li>
+              </ul>
+              <div class="thumb">Output image 1</div>
+              <div class="thumb">Output image 2</div>
               <div class="links">
-                <a href="#">Repo</a>
-                <a href="#">Report</a>
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
             </div>
           </article>
         </div>
       </section>
 
+      <!-- Skills Section -->
       <section id="skills" class="section">
         <h2>Skills</h2>
-        <div class="grid" style="margin-top:12px">
-          <div class="card">
-            <strong>Technical</strong>
-            <p class="meta">Python, Power BI, Tableau, Azure, Excel, SQL, Git</p>
-          </div>
-          <div class="card">
-            <strong>Data & Analysis</strong>
-            <p class="meta">Forecasting, ETL, Dashboard design, Data modelling</p>
-          </div>
-          <div class="card">
-            <strong>Tools</strong>
-            <p class="meta">Jupyter, GitHub, Colab, Power BI Service</p>
-          </div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+          <div class="card"><strong>Technical</strong><p class="meta">Python, Power BI, Tableau, Azure, Excel, SQL, Git</p></div>
+          <div class="card"><strong>Data & Analysis</strong><p class="meta">Forecasting, ETL, Dashboard design, Data modelling</p></div>
+          <div class="card"><strong>Tools</strong><p class="meta">Jupyter, GitHub, Colab, Power BI Service</p></div>
         </div>
       </section>
 
+      <!-- Contact Section -->
       <section id="contact" class="section">
         <h2>Contact</h2>
         <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
