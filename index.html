@@ -21,16 +21,23 @@
     .container { max-width:1100px; margin:0 auto; padding:28px }
     header { display:flex; gap:18px; align-items:center; padding:18px 0 }
     .avatar {
-      width:110px;
-      height:110px;
-      border-radius:12px;
+      width:120px;
+      height:120px;
+      border-radius:50%; /* round profile image */
       overflow:hidden;
       border:4px solid #fff;
-      box-shadow:0 6px 20px rgba(11,120,209,.08);
+      box-shadow:0 6px 20px rgba(11,120,209,.1);
+      flex-shrink:0;
     }
     .avatar img { width:100%; height:100%; object-fit:cover }
     h1 { margin:0; font-size:28px }
     p.lead { margin:6px 0 0; color:var(--muted) }
+    .bio {
+      margin-top:10px;
+      max-width:600px;
+      line-height:1.5;
+      color:var(--muted);
+    }
 
     nav { margin-left:auto }
     nav a {
@@ -54,16 +61,15 @@
     .meta { font-size:13px; color:var(--muted) }
     .project-body { margin-top:12px }
     .project-body ul { padding-left:18px; margin:6px 0 }
-    .thumb, .project-gallery img {
+    .thumb {
       width:100%;
+      height:160px;
+      background:#eef5fb;
       border-radius:8px;
-      margin-top:10px;
-    }
-    .project-gallery {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-      gap:10px;
-      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#9db9d9;
     }
     .links { margin-top:10px }
     .links a {
@@ -90,7 +96,7 @@
     /* responsive tweaks */
     @media (max-width:640px) {
       .hero { flex-direction:column; align-items:flex-start }
-      .avatar { width:86px; height:86px }
+      .avatar { width:100px; height:100px }
     }
   </style>
 </head>
@@ -104,7 +110,7 @@
         <div>
           <h1>Athiramol PS</h1>
           <p class="lead">Data Analyst</p>
-          <p style="margin-top:8px;color:var(--muted)">
+          <p class="bio">
             Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
           </p>
         </div>
@@ -116,69 +122,50 @@
         <h2>Portfolio</h2>
 
         <div class="grid" id="projects-grid">
-          <!-- Tableau Project -->
+          <!-- Example Project Card -->
           <article class="card project-card">
             <div class="project-title">
-              <strong>1. Tableau — Admissions Dashboard | Education</strong>
-              <span class="meta">Tableau • Dashboard • Admissions Analytics</span>
+              <strong>1. Python — Sales Forecasting</strong>
+              <span class="meta">Python • Pandas • Prophet</span>
             </div>
             <div class="project-body">
-              <p class="meta">Business Problem</p>
+              <p class="meta">Business requirements</p>
               <ul>
-                <li>Institutions struggle to manage large volumes of applicant data.</li>
-                <li>Lack of central reporting makes trends and diversity tracking hard.</li>
+                <li>Provide monthly sales forecast for next 6 months</li>
+                <li>Allow scenario testing by region</li>
               </ul>
 
               <p class="meta">Goals</p>
               <ul>
-                <li>Develop interactive admissions dashboard to track applications & enrollments.</li>
-                <li>Segment applicants by demographics (age, gender, ethnicity, country).</li>
-                <li>Support admissions planning and diversity initiatives.</li>
+                <li>Accurate baseline forecast (MAPE &lt; 10%)</li>
               </ul>
 
-              <p class="meta">What Output Got?</p>
+              <p class="meta">Analysis Steps</p>
               <ul>
-                <li>Tableau dashboard with overview, programs view, demographics view, and applicant details.</li>
-                <li>Improved ability to monitor admissions performance and diversity metrics.</li>
+                <li>Data cleaning &amp; enrichment</li>
+                <li>Feature engineering (promo flags, seasonality)</li>
+                <li>Model selection &amp; validation</li>
               </ul>
 
-              <!-- Tableau Embed -->
-              <div class='tableauPlaceholder' id='viz1758052754095' style='position: relative'>
-                <noscript>
-                  <a href='#'>
-                    <img alt='Admissions Dashboard' 
-                      src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' 
-                      style='border: none' />
-                  </a>
-                </noscript>
-                <object class='tableauViz' style='display:none;'>
-                  <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                  <param name='embed_code_version' value='3' /> 
-                  <param name='site_root' value='' />
-                  <param name='name' value='AdmissionsDashboardEducation/Overview' />
-                  <param name='tabs' value='no' />
-                  <param name='toolbar' value='yes' />
-                  <param name='static_image' value='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1.png' />
-                  <param name='animate_transition' value='yes' />
-                  <param name='display_static_image' value='yes' />
-                  <param name='display_spinner' value='yes' />
-                  <param name='display_overlay' value='yes' />
-                  <param name='display_count' value='yes' />
-                  <param name='language' value='en-GB' />
-                </object>
+              <p class="meta">Solution</p>
+              <ul>
+                <li>Built pipeline in Python using pandas &amp; Prophet; model retrains weekly.</li>
+              </ul>
+
+              <div class="thumb">Output images / screenshots (replace with actual images)</div>
+
+              <div class="links">
+                <a href="#">View repo</a>
+                <a href="#">View report</a>
               </div>
-              <script type='text/javascript'>                    
-                var divElement = document.getElementById('viz1758052754095');                    
-                var vizElement = divElement.getElementsByTagName('object')[0];                    
-                vizElement.style.width='100%'; 
-                vizElement.style.height='700px';                    
-                var scriptElement = document.createElement('script');                    
-                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-                vizElement.parentNode.insertBefore(scriptElement, vizElement);                
-              </script>
             </div>
           </article>
+        </div>
 
+        <p style="color:var(--muted);font-size:13px;margin-top:12px">
+          Tip: Duplicate the <code>&lt;article.project-card&gt;</code> block and update the title + details for each project (2 → 10).
+        </p>
+      </section>
 
       <section id="skills" class="section">
         <h2>Skills</h2>
