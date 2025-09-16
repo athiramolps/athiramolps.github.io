@@ -5,40 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Athiramol — Portfolio</title>
   <style>
-    :root{--accent:#0b78d1;--bg:#f7fbff;--card:#ffffff;--muted:#666}
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#111}
-    .container{max-width:1100px;margin:0 auto;padding:28px}
-    header{display:flex;gap:18px;align-items:center;padding:18px 0}
-    .avatar{width:110px;height:110px;border-radius:12px;overflow:hidden;border:4px solid #fff;box-shadow:0 6px 20px rgba(11,120,209,.08)}
-    .avatar img{width:100%;height:100%;object-fit:cover}
-    h1{margin:0;font-size:28px}
-    p.lead{margin:6px 0 0;color:var(--muted)}
+    :root {
+      --accent:#0b78d1;
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --muted:#666;
+    }
+    * { box-sizing:border-box }
+    body {
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      background:var(--bg);
+      color:#111;
+    }
+    .container { max-width:1100px; margin:0 auto; padding:28px }
+    header { display:flex; gap:18px; align-items:center; padding:18px 0 }
+    .avatar {
+      width:110px;
+      height:110px;
+      border-radius:12px;
+      overflow:hidden;
+      border:4px solid #fff;
+      box-shadow:0 6px 20px rgba(11,120,209,.08);
+    }
+    .avatar img { width:100%; height:100%; object-fit:cover }
+    h1 { margin:0; font-size:28px }
+    p.lead { margin:6px 0 0; color:var(--muted) }
 
-    nav{margin-left:auto}
-    nav a{margin-left:12px;color:var(--accent);text-decoration:none;font-weight:600}
+    nav { margin-left:auto }
+    nav a {
+      margin-left:12px;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
 
-    .hero{display:flex;gap:24px;align-items:center}
-    .section{margin-top:28px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .hero { display:flex; gap:24px; align-items:center }
+    .section { margin-top:28px }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px }
 
-    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(12,18,36,.04)}
-    .project-title{display:flex;justify-content:space-between;align-items:center}
-    .meta{font-size:13px;color:var(--muted)}
-    .project-body{margin-top:12px}
-    .project-body ul{padding-left:18px;margin:6px 0}
-    .thumb{width:100%;height:160px;background:#eef5fb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9db9d9}
-    .links{margin-top:10px}
-    .links a{display:inline-block;margin-right:8px;padding:8px 10px;border-radius:8px;text-decoration:none;border:1px solid #e6eef8;font-size:13px}
+    .card {
+      background:var(--card);
+      padding:16px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(12,18,36,.04);
+    }
+    .project-title { display:flex; justify-content:space-between; align-items:center }
+    .meta { font-size:13px; color:var(--muted) }
+    .project-body { margin-top:12px }
+    .project-body ul { padding-left:18px; margin:6px 0 }
+    .thumb {
+      width:100%;
+      height:160px;
+      background:#eef5fb;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#9db9d9;
+    }
+    .links { margin-top:10px }
+    .links a {
+      display:inline-block;
+      margin-right:8px;
+      padding:8px 10px;
+      border-radius:8px;
+      text-decoration:none;
+      border:1px solid #e6eef8;
+      font-size:13px;
+    }
 
-    footer{margin:40px 0;padding:20px;text-align:center;color:var(--muted)}
-    .contact{display:flex;gap:12px;align-items:center;justify-content:center}
-    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    footer { margin:40px 0; padding:20px; text-align:center; color:var(--muted) }
+    .contact { display:flex; gap:12px; align-items:center; justify-content:center }
+    .btn {
+      background:var(--accent);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+    }
 
-    /* responsive small tweaks */
-    @media (max-width:640px){.hero{flex-direction:column;align-items:flex-start}.avatar{width:86px;height:86px}}
-
-    /* helper comment: duplicate a .project-card for each portfolio entry */
+    /* responsive tweaks */
+    @media (max-width:640px) {
+      .hero { flex-direction:column; align-items:flex-start }
+      .avatar { width:86px; height:86px }
+    }
   </style>
 </head>
 <body>
@@ -46,13 +98,15 @@
     <header>
       <div class="hero">
         <div class="avatar">
-          <!-- Replace src with your photo file name (e.g. "me.jpg") -->
-          <img src="assets/me.jpg" alt="Athiramol">
+          <!-- Updated to use your uploaded image -->
+          <img src="images/a.jpg" alt="Athiramol PS">
         </div>
         <div>
           <h1>Athiramol PS</h1>
           <p class="lead">Data Analyst</p>
-          <p style="margin-top:8px;color:var(--muted)">I build data-driven dashboards and analytical solutions using Python, Power BI, Tableau and Azure.</p>
+          <p style="margin-top:8px;color:var(--muted)">
+            I build data-driven dashboards and analytical solutions using Python, Power BI, Tableau and Azure.
+          </p>
         </div>
       </div>
     </header>
@@ -61,10 +115,8 @@
       <section id="projects" class="section">
         <h2>Portfolio</h2>
 
-        <!-- Projects list -->
         <div class="grid" id="projects-grid">
-
-          <!-- Example Project Card - copy this block and update content for each of your 10 portfolios -->
+          <!-- Example Project Card -->
           <article class="card project-card">
             <div class="project-title">
               <strong>1. Python — Sales Forecasting</strong>
@@ -102,13 +154,11 @@
               </div>
             </div>
           </article>
-
-          <!-- Copy ends — add more cards for 2..10 -->
-
         </div>
 
-        <!-- Quick instructions to duplicate cards -->
-        <p style="color:var(--muted);font-size:13px;margin-top:12px">Tip: Duplicate the <code>article.project-card</code> block and update the title + details for each project (2 -> 10).</p>
+        <p style="color:var(--muted);font-size:13px;margin-top:12px">
+          Tip: Duplicate the <code>&lt;article.project-card&gt;</code> block and update the title + details for each project (2 → 10).
+        </p>
       </section>
 
       <section id="skills" class="section">
@@ -138,16 +188,11 @@
           </div>
         </div>
       </section>
-
     </main>
 
     <footer>
       <small>© Athiramol PS — Built with GitHub Pages</small>
     </footer>
   </div>
-
-  
-
-  -->
 </body>
 </html>
