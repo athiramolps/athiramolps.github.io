@@ -21,16 +21,23 @@
     .container { max-width:1100px; margin:0 auto; padding:28px }
     header { display:flex; gap:18px; align-items:center; padding:18px 0 }
     .avatar {
-      width:110px;
-      height:110px;
-      border-radius:12px;
+      width:120px;
+      height:120px;
+      border-radius:50%; /* round profile image */
       overflow:hidden;
       border:4px solid #fff;
-      box-shadow:0 6px 20px rgba(11,120,209,.08);
+      box-shadow:0 6px 20px rgba(11,120,209,.1);
+      flex-shrink:0;
     }
     .avatar img { width:100%; height:100%; object-fit:cover }
     h1 { margin:0; font-size:28px }
     p.lead { margin:6px 0 0; color:var(--muted) }
+    .bio {
+      margin-top:10px;
+      max-width:600px;
+      line-height:1.5;
+      color:var(--muted);
+    }
 
     nav { margin-left:auto }
     nav a {
@@ -89,7 +96,7 @@
     /* responsive tweaks */
     @media (max-width:640px) {
       .hero { flex-direction:column; align-items:flex-start }
-      .avatar { width:86px; height:86px }
+      .avatar { width:100px; height:100px }
     }
   </style>
 </head>
@@ -98,19 +105,13 @@
     <header>
       <div class="hero">
         <div class="avatar">
-          <!-- Updated to use your uploaded image -->
           <img src="images/a.jpg" alt="Athiramol PS">
         </div>
         <div>
           <h1>Athiramol PS</h1>
           <p class="lead">Data Analyst</p>
-          <p style="margin-top:8px;color:var(--muted)">
-            
-Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
-
-Completed an intensive 8-week Digital Skills Bootcamp in Data Technician at JustIT Training, UK, enhancing analytics skills and building a strong portfolio through personal projects. Skilled in Excel, Tableau, Power BI, MySQL, Python, and Azure, with a strong foundation in data analysis, visualization, and database management.
-
-Seeking a Data Apprenticeship to further develop expertise, gain hands-on experience, and adapt to the UK workplace culture.
+          <p class="bio">
+            Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
           </p>
         </div>
       </div>
