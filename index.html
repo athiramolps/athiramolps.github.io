@@ -320,63 +320,71 @@ function closeLightbox() {
       <li>A scalable solution that supports data-driven admissions planning and reporting.</li>
     </ul>
 
-    <!-- Tableau Embedded Dashboard with Scrollable Card -->
-    <div class="tableau-dashboard">
-      <div class='tableauPlaceholder' id='viz1758102007517' style='position: relative;'>
-        <noscript>
-          <a href='#'>
-            <img alt='Admissions Dashboard Overview' src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' style='border: none' />
-          </a>
-        </noscript>
-        <object class='tableauViz' style='display:none;'>
-          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-          <param name='embed_code_version' value='3' /> 
-          <param name='site_root' value='' />
-          <param name='name' value='AdmissionsDashboardEducation/Overview' />
-          <param name='tabs' value='no' />
-          <param name='toolbar' value='yes' />
-          <param name='static_image' value='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1.png' /> 
-          <param name='animate_transition' value='yes' />
-          <param name='display_static_image' value='yes' />
-          <param name='display_spinner' value='yes' />
-          <param name='display_overlay' value='yes' />
-          <param name='display_count' value='yes' />
-          <param name='language' value='en-GB' />
-        </object>
-      </div>
-      <script type='text/javascript'>
-        var divElement = document.getElementById('viz1758102007517');
-        var vizElement = divElement.getElementsByTagName('object')[0];
-        vizElement.style.width='100%';     // Full width of card
-        vizElement.style.height='100%';    // Will fill container
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-        vizElement.parentNode.insertBefore(scriptElement, vizElement);
-      </script>
-    </div>
-
-    <!-- Project Button -->
-    <div class="links">
-      <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AdmissionsDashboardEducation/Overview" 
-         target="_blank" 
-         class="btn">Go to Project</a>
-    </div>
+    <!-- Tableau Embedded Dashboard (Scaled to Fit Card) -->
+<div class="tableau-dashboard">
+  <div class='tableauPlaceholder' id='viz1758102007517' style='position: relative;'>
+    <noscript>
+      <a href='#'>
+        <img alt='Admissions Dashboard Overview' src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' style='border: none' />
+      </a>
+    </noscript>
+    <object class='tableauViz' style='display:none;'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+      <param name='embed_code_version' value='3' /> 
+      <param name='site_root' value='' />
+      <param name='name' value='AdmissionsDashboardEducation/Overview' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1.png' /> 
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='language' value='en-GB' />
+    </object>
   </div>
-</article>
+  <script type='text/javascript'>
+    var divElement = document.getElementById('viz1758102007517');
+    var vizElement = divElement.getElementsByTagName('object')[0];
 
-<!-- Add CSS for Scrollable Tableau Container -->
+    // Full dashboard original size
+    const originalWidth = 3288;
+    const originalHeight = 1868;
+
+    // Card dimensions (adjust as per your padded card)
+    const cardWidth = divElement.clientWidth;
+    const cardHeight = 600; // same as before
+
+    // Calculate scale ratio
+    const scaleX = cardWidth / originalWidth;
+    const scaleY = cardHeight / originalHeight;
+    const scale = Math.min(scaleX, scaleY);
+
+    // Apply scale transform
+    vizElement.style.transform = `scale(${scale})`;
+    vizElement.style.transformOrigin = "top left";
+
+    // Set container size to prevent overflow
+    vizElement.style.width = `${originalWidth}px`;
+    vizElement.style.height = `${originalHeight}px`;
+
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>
+</div>
+
+<!-- CSS -->
 <style>
 .tableau-dashboard {
   width: 100%;
-  height: 600px; /* Adjust height for visibility */
-  overflow-y: auto; /* Scroll if dashboard is taller */
+  height: 600px; /* Keep card padded height */
+  overflow: hidden; /* Hide overflow since we scale down */
   margin-top: 12px;
 }
-.tableau-dashboard object {
-  width: 100% !important;
-  height: 100% !important;
-}
 </style>
+
 
 
 
