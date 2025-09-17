@@ -368,24 +368,33 @@ function closeLightbox() {
     <!-- Add space before embedded dashboard -->
     <div style="height:12px;"></div>
 
-    <!-- Embedded Tableau Dashboard -->
-    <div class="tableau-dashboard">
-      <div class='tableauPlaceholder' id='viz1758106064817' style='position: relative; margin:0 auto;'>
-        <noscript>
-          <a href='#'>
-            <img alt='Camden Traffic Dashboard' src='https://public.tableau.com/static/images/Wh/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC/1_rss.png' style='border: none' />
-          </a>
-        </noscript>
-        <object class='tableauViz' style='display:block; margin:0 auto;'>
-          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-          <param name='embed_code_version' value='3' /> 
-          <param name='site_root' value='' />
-          <param name='name' value='WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC' />
-          <param name='tabs' value='no' />
-          <param name='toolbar' value='yes' />
-        </object>
-      </div>
-    </div>
+<!-- Embedded Tableau Dashboard -->
+<div class='tableauPlaceholder' id='viz1758106064817' style='position: relative; margin:0 auto;'>
+  <noscript>
+    <a href='#'>
+      <img alt='Camden Traffic Dashboard' src='https://public.tableau.com/static/images/Wh/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC/1_rss.png' style='border: none' />
+    </a>
+  </noscript>
+  <object class='tableauViz' style='display:block; margin:0 auto;'>
+    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+    <param name='embed_code_version' value='3' /> 
+    <param name='site_root' value='' />
+    <param name='name' value='WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC' />
+    <param name='tabs' value='no' />
+    <param name='toolbar' value='yes' />
+  </object>
+</div>
+
+<script type='text/javascript'>
+  var divElement = document.getElementById('viz1758106064817');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  vizElement.style.width = '100%'; // Fit your padded layout
+  vizElement.style.height = '800px'; // Adjust height as needed
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+
 
     <!-- Project Button -->
     <div class="links">
