@@ -213,7 +213,7 @@
 .btn {
   display: inline-block;
   background-color: #007bff; /* Blue button */
-  color: white; /* White text */
+  color: white !important; /* Always white text */
   padding: 10px 20px;
   border-radius: 6px;
   text-decoration: none;
@@ -221,6 +221,14 @@
   font-size: 14px;
 }
 
+/* Prevent default link effects */
+.btn:visited,
+.btn:active,
+.btn:hover,
+.btn:focus {
+  color: white !important;
+  text-decoration: none;
+}
 
 /* Lightbox Styles */
 .lightbox {
