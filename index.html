@@ -112,12 +112,14 @@
         <div id="projects-list">
           <!-- Repeat this article block for each project, 1 → 10 -->
 <!-- Power BI Project Card -->
+<!-- Power BI Project Card -->
 <article class="card project-card">
   <div class="project-title">
     <strong>1. Power BI — Sales Dashboard</strong>
     <span class="meta">Power BI • DAX • Data Modeling</span>
   </div>
   <div class="project-body">
+    
     <p class="meta">Business Problem</p>
     <ul>
       <li>LARA Company needed a data-driven insight into sales performance, growth patterns, and revenue trends.</li>
@@ -158,18 +160,49 @@
       <li>A centralized reporting tool enabling data-driven decision-making and performance optimization.</li>
     </ul>
     
-<div class="thumb">
-  <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" alt="Power BI Sales Dashboard Preview 1">
-</div>
-<div class="thumb">
-  <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" alt="Power BI Sales Dashboard Preview 2">
-</div>
-<div class="thumb">
-  <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" alt="Power BI Sales Dashboard Preview 3">
-</div>
-<div class="thumb">
-  <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" alt="Power BI Sales Dashboard Preview 4">
-</div>
+    <!-- Image Grid -->
+    <div class="thumbs">
+      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" target="_blank">
+        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" alt="Power BI Sales Dashboard Preview 1">
+      </a>
+      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" target="_blank">
+        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" alt="Power BI Sales Dashboard Preview 2">
+      </a>
+      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" target="_blank">
+        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" alt="Power BI Sales Dashboard Preview 3">
+      </a>
+      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" target="_blank">
+        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" alt="Power BI Sales Dashboard Preview 4">
+      </a>
+    </div>
+    
+    <div class="links">
+      <a href="https://github.com/athiramolps" target="_blank" class="btn">View Project</a>
+    </div>
+  </div>
+</article>
+
+<!-- Add this CSS somewhere in your stylesheet -->
+<style>
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.thumbs img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.thumbs img:hover {
+  transform: scale(1.05);
+}
+</style>
+
   </div>
 </article>
 
