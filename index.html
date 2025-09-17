@@ -8,14 +8,14 @@
 :root {
   --accent: #0b78d1;
   --muted: #6c757d;
-  --bg: #fff;
   --text: #111;
 }
 
+/* Body and container */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--bg);
+  background-color: #e6f2ff; /* light blue background */
   color: var(--text);
 }
 
@@ -25,6 +25,7 @@ body {
   padding: 28px;
 }
 
+/* Header */
 header {
   display: flex;
   flex-direction: column;
@@ -41,19 +42,27 @@ header {
   object-fit: cover;
 }
 
-h1 {
-  margin: 0;
-}
+h1 { margin: 0; }
+h3 { margin: 4px 0; color: var(--muted); }
 
 .lead {
   font-size: 16px;
   color: var(--text);
 }
 
-p.meta {
-  font-size: 13px;
-  color: var(--muted);
-  margin: 6px 0;
+/* Card style */
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(12,18,36,.04);
+  background: #fff; /* white card background */
+}
+
+/* Project styles */
+#projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* spacing between projects */
 }
 
 .project-title {
@@ -64,19 +73,13 @@ p.meta {
   gap: 6px;
 }
 
-.card {
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(12,18,36,.04);
-  background: #fff;
+p.meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 6px 0;
 }
 
-#projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px; /* spacing between projects */
-}
-
+/* Thumbnails */
 .thumbs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -95,6 +98,7 @@ p.meta {
   transform: scale(1.05);
 }
 
+/* Buttons */
 .btn {
   text-decoration: none;
   font-weight: 600;
@@ -112,6 +116,7 @@ p.meta {
   text-align: center;
 }
 
+/* Footer and contact */
 footer {
   margin: 40px 0;
   padding: 20px;
@@ -162,7 +167,7 @@ footer {
 
 .close:hover { color: #f00; }
 
-/* responsive tweaks */
+/* Responsive */
 @media (max-width:640px){
   header { padding:20px }
   .avatar { width:120px; height:120px }
@@ -172,13 +177,14 @@ footer {
 </head>
 <body>
 <div class="container">
+
 <header>
   <img class="avatar" src="https://via.placeholder.com/150" alt="Avatar">
   <h1>Athiramol PS</h1>
+  <h3>Durham, UK</h3>
   <p class="lead">
     Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
   </p>
-  <p style="color:var(--muted); margin-top:4px;">Durham, UK</p>
 </header>
 
 <main>
@@ -194,17 +200,11 @@ footer {
   </div>
   <div class="project-body">
     <p class="meta">Business Problem</p>
-    <ul>
-      <li>LARA Company needed a data-driven insight into sales performance, growth patterns, and revenue trends.</li>
-    </ul>
+    <ul><li>LARA Company needed a data-driven insight into sales performance, growth patterns, and revenue trends.</li></ul>
     <p class="meta">Goals</p>
-    <ul>
-      <li>Conduct sales analysis across all categories and products.</li>
-    </ul>
+    <ul><li>Conduct sales analysis across all categories and products.</li></ul>
     <p class="meta">What Output Got?</p>
-    <ul>
-      <li>An interactive Power BI Sales Dashboard featuring KPIs, top products, and detailed insights.</li>
-    </ul>
+    <ul><li>An interactive Power BI Sales Dashboard featuring KPIs, top products, and detailed insights.</li></ul>
     <div class="thumbs">
       <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" onclick="openLightbox(this)">
       <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" onclick="openLightbox(this)">
@@ -225,17 +225,11 @@ footer {
   </div>
   <div class="project-body">
     <p class="meta">Business Problem</p>
-    <ul>
-      <li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li>
-    </ul>
+    <ul><li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li></ul>
     <p class="meta">Goals</p>
-    <ul>
-      <li>Develop an interactive admissions dashboard to visualize applications and enrollments.</li>
-    </ul>
+    <ul><li>Develop an interactive admissions dashboard to visualize applications and enrollments.</li></ul>
     <p class="meta">What Output Got?</p>
-    <ul>
-      <li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li>
-    </ul>
+    <ul><li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li></ul>
     <div class="thumbs">
       <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/1.png" onclick="openLightbox(this)">
       <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/2.png" onclick="openLightbox(this)">
@@ -256,17 +250,11 @@ footer {
   </div>
   <div class="project-body">
     <p class="meta">Business Problem</p>
-    <ul>
-      <li>Camden, UK faced frequent road traffic accidents, but limited insight into causes, severity, timing, and road user involvement.</li>
-    </ul>
+    <ul><li>Camden, UK faced frequent road traffic accidents, but limited insight into causes, severity, timing, and road user involvement.</li></ul>
     <p class="meta">Goals</p>
-    <ul>
-      <li>Analyze accident severity (fatal, serious, slight) to understand collision impact.</li>
-    </ul>
+    <ul><li>Analyze accident severity (fatal, serious, slight) to understand collision impact.</li></ul>
     <p class="meta">What Output Got?</p>
-    <ul>
-      <li>Interactive Tableau dashboard showing accident severity, trends, and road user involvement.</li>
-    </ul>
+    <ul><li>Interactive Tableau dashboard showing accident severity, trends, and road user involvement.</li></ul>
 
     <!-- Embedded Tableau Dashboard -->
     <div class='tableauPlaceholder' id='viz1758106064817' style='position: relative; margin:0 auto;'>
