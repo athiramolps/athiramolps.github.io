@@ -466,17 +466,12 @@ Entry Level Data Analyst 📊 with experience in data visualization, business in
 
 
 
-Yes, you are right. The projects in the two rows are not perfectly aligned because the container for each project has different heights due to the varying lengths of the project titles. Some titles, like "Ad-HOC Reporting" and "Machine Learning," are so long they wrap to a second line. This shifts the "View Project" button down, causing the misalignment.
 
-The simplest solution is to make all the project title containers have a fixed height. This way, whether the title is one line or two, the height of the container will be the same, and the button will always be in the same position.
 
------
 
-### Corrected Code
 
-You can fix this by adding a fixed `height` to the `h3` element for the project titles. I've also added `display: flex;` and `align-items: flex-end;` to the `.tool-card` to ensure the buttons are all aligned to the bottom.
 
-```html
+  
 <section id="additional-tools" style="margin-bottom:40px;">
   <div class="card project-card" style="padding:30px; background-color:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
     <div class="project-title">
