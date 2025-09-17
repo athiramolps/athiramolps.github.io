@@ -284,21 +284,19 @@ function closeLightbox() {
 
 
 
+<!-- Tableau Project Card -->
 <article class="card project-card">
   <div class="project-title">
     <strong>3. Tableau — Admissions Dashboard | Education</strong>
-    <span class="meta">Tableau • Data Visualization • Admissions Analytics</span>
+    <span class="meta">Tableau • Education • Data Visualization</span>
   </div>
-
   <div class="project-body">
+    
     <p class="meta">Business Problem</p>
-    <p>
-      Educational institutions often struggle to manage and interpret large volumes of applicant data. 
-      They need to track applications, enrollments, and demographic information effectively to make 
-      data-driven decisions on program offerings, resource allocation, and diversity initiatives. 
-      Without a centralized, visual reporting system, it becomes difficult to identify trends, 
-      compare program demand, and monitor applicant conversion.
-    </p>
+    <ul>
+      <li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li>
+      <li>Without a centralized, visual reporting system, it is difficult to identify trends and monitor applicant conversion.</li>
+    </ul>
 
     <p class="meta">Goals</p>
     <ul>
@@ -311,79 +309,85 @@ function closeLightbox() {
 
     <p class="meta">What Output Got?</p>
     <ul>
-      <li>A Tableau Admissions Dashboard with multiple views:</li>
-      <li>Overview Page: Summarized applications and enrollments trends.</li>
-      <li>Programs View: Applications and enrollments for medical-related programs.</li>
-      <li>Demographics View: Applicant segmentation by age, gender, ethnicity, and country.</li>
-      <li>Applicant Details Page: Individual-level applicant records for detailed review.</li>
-      <li>Improved ability for stakeholders to monitor admissions performance, compare programs, and analyze applicant diversity.</li>
+      <li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li>
+      <li>Improved ability for stakeholders to monitor admissions performance and analyze applicant diversity.</li>
       <li>A scalable solution that supports data-driven admissions planning and reporting.</li>
     </ul>
 
-    <!-- Tableau Embedded Dashboard (Scaled to Fit Card) -->
-<div class="tableau-dashboard">
-  <div class='tableauPlaceholder' id='viz1758102007517' style='position: relative;'>
-    <noscript>
-      <a href='#'>
-        <img alt='Admissions Dashboard Overview' src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' style='border: none' />
+    <!-- Tableau Embedded Dashboard (Centered & Scaled to Fit Card) -->
+    <div class="tableau-dashboard">
+      <div class='tableauPlaceholder' id='viz1758102007517' style='position: relative; margin:0 auto;'>
+        <noscript>
+          <a href='#'>
+            <img alt='Admissions Dashboard Overview' src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' style='border: none' />
+          </a>
+        </noscript>
+        <object class='tableauViz' style='display:none; margin:0 auto;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+          <param name='embed_code_version' value='3' /> 
+          <param name='site_root' value='' />
+          <param name='name' value='AdmissionsDashboardEducation/Overview' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image' value='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1.png' /> 
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en-GB' />
+        </object>
+      </div>
+      <script type='text/javascript'>
+        var divElement = document.getElementById('viz1758102007517');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+
+        // Original Tableau dashboard size
+        const originalWidth = 3288;
+        const originalHeight = 1868;
+
+        // Container (card) width
+        const containerWidth = divElement.clientWidth;
+        const containerHeight = 600; // keep the padded height
+
+        // Calculate scale
+        const scale = Math.min(containerWidth / originalWidth, containerHeight / originalHeight);
+
+        // Apply scaling & center
+        vizElement.style.transform = `scale(${scale})`;
+        vizElement.style.transformOrigin = "top center"; 
+        vizElement.style.width = `${originalWidth}px`;
+        vizElement.style.height = `${originalHeight}px`;
+
+        // Load Tableau JS
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+    </div>
+
+    <!-- Project Button -->
+    <div class="links">
+      <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AdmissionsDashboardEducation/Overview" 
+         target="_blank" 
+         class="btn">
+         Go to Project
       </a>
-    </noscript>
-    <object class='tableauViz' style='display:none;'>
-      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-      <param name='embed_code_version' value='3' /> 
-      <param name='site_root' value='' />
-      <param name='name' value='AdmissionsDashboardEducation/Overview' />
-      <param name='tabs' value='no' />
-      <param name='toolbar' value='yes' />
-      <param name='static_image' value='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1.png' /> 
-      <param name='animate_transition' value='yes' />
-      <param name='display_static_image' value='yes' />
-      <param name='display_spinner' value='yes' />
-      <param name='display_overlay' value='yes' />
-      <param name='display_count' value='yes' />
-      <param name='language' value='en-GB' />
-    </object>
+    </div>
   </div>
-  <script type='text/javascript'>
-    var divElement = document.getElementById('viz1758102007517');
-    var vizElement = divElement.getElementsByTagName('object')[0];
+</article>
 
-    // Full dashboard original size
-    const originalWidth = 3288;
-    const originalHeight = 1868;
-
-    // Card dimensions (adjust as per your padded card)
-    const cardWidth = divElement.clientWidth;
-    const cardHeight = 600; // same as before
-
-    // Calculate scale ratio
-    const scaleX = cardWidth / originalWidth;
-    const scaleY = cardHeight / originalHeight;
-    const scale = Math.min(scaleX, scaleY);
-
-    // Apply scale transform
-    vizElement.style.transform = `scale(${scale})`;
-    vizElement.style.transformOrigin = "top left";
-
-    // Set container size to prevent overflow
-    vizElement.style.width = `${originalWidth}px`;
-    vizElement.style.height = `${originalHeight}px`;
-
-    var scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
-  </script>
-</div>
-
-<!-- CSS -->
+<!-- CSS for Tableau Dashboard -->
 <style>
 .tableau-dashboard {
   width: 100%;
-  height: 600px; /* Keep card padded height */
-  overflow: hidden; /* Hide overflow since we scale down */
+  height: 600px; /* card padded height */
+  overflow: hidden;
   margin-top: 12px;
+  text-align: center; /* center the scaled dashboard */
 }
 </style>
+
 
 
 
