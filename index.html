@@ -1,330 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Athiramol — Portfolio | Durham, UK</title>
-  <title>Athiramol — Portfolio</title>
+<title>Athiramol — Portfolio | Durham, UK</title>
 <style>
 :root {
---accent:#0b78d1;
-@@ -20,7 +20,7 @@
-color:#111;
+  --accent: #0b78d1;
+  --muted: #6c757d;
+  --bg: #fff;
+  --text: #111;
 }
 
-    .container { max-width:1100px; margin:0 auto; padding:28px }
-    .container { max-width:1320px; margin:0 auto; padding:28px } /* Increased width by ~20% */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
 
-header { display:flex; flex-direction:column; gap:20px; align-items:center; padding:28px 0; text-align:center }
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 28px 0;
+  text-align: center;
+}
+
 .avatar {
-@@ -42,7 +42,6 @@
-padding:20px;
-border-radius:12px;
-box-shadow:0 6px 18px rgba(12,18,36,.04);
-      margin-bottom:20px; /* added margin between projects */
-}
-.project-title { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px }
-.meta { font-size:13px; color:var(--muted) }
-@@ -59,7 +58,29 @@
-color:#9db9d9;
-margin-top:10px;
-}
-    .links { margin-top:12px; text-align:center }
-
-    /* Images grid */
-    .thumbs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .thumbs img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-    }
-    .thumbs img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Project Button */
-    .links {
-      margin-top: 15px;
-      text-align: center; /* Centers button */
-    }
-.links a {
-display: inline-block;
-margin-right: 8px;
-@@ -71,29 +92,19 @@
-color: #fff;          /* White text */
-background-color: var(--accent); /* Blue button */
-text-align: center;
-      border: none;          /* Remove border */
-      border: none;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-footer { margin:40px 0; padding:20px; text-align:center; color:var(--muted) }
-.contact { display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap }
-    .btn {
-      background:var(--accent);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:600;
-    }
+h1 {
+  margin: 0;
+}
 
-    /* Projects stacked vertically */
-    #projects-list { display:flex; flex-direction:column; gap:20px; }
+.lead {
+  font-size: 16px;
+  color: var(--text);
+}
 
-    /* Image grids */
-    .thumbs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin: 20px 0; /* <- added margin */
-    .btn {
-      text-decoration: none;
-      font-weight: 600;
-      color: #fff;
-      background-color: var(--accent);
-      padding: 10px 14px;
-      border-radius: 10px;
+p.meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 6px 0;
+}
+
+.project-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(12,18,36,.04);
+  background: #fff;
+}
+
+#projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* spacing between projects */
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.thumbs img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.thumbs img:hover {
+  transform: scale(1.05);
+}
+
+.btn {
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--accent);
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.links {
+  margin-top: 15px;
+  text-align: center;
+}
+
+footer {
+  margin: 40px 0;
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.contact {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Lightbox Styles */
-@@ -109,15 +120,13 @@
-overflow: auto;
-background-color: rgba(0,0,0,0.9);
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
 }
 
 .lightbox-content {
-display: block;
-margin: auto;
-max-width: 90%;
-max-height: 90%;
-border-radius: 10px;
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
 }
 
 .close {
-position: absolute;
-top: 20px;
-@@ -126,17 +135,15 @@
-font-size: 40px;
-font-weight: bold;
-cursor: pointer;
-      transition: 0.3s;
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-    .close:hover { color: #f00; }
+.close:hover { color: #f00; }
 
 /* responsive tweaks */
 @media (max-width:640px){
-header { padding:20px }
-.avatar { width:120px; height:120px }
-h1 { font-size:28px }
+  header { padding:20px }
+  .avatar { width:120px; height:120px }
+  h1 { font-size:28px }
 }
-
 </style>
 </head>
 <body>
-@@ -150,73 +157,157 @@ <h1>Athiramol PS</h1>
-<p class="lead">
-Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
-</p>
-      <p style="color:var(--muted); margin-top:4px;">Durham, UK</p>
+<div class="container">
+<header>
+  <img class="avatar" src="https://via.placeholder.com/150" alt="Avatar">
+  <h1>Athiramol PS</h1>
+  <p class="lead">
+    Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
+  </p>
+  <p style="color:var(--muted); margin-top:4px;">Durham, UK</p>
 </header>
 
-    <!-- Main Section -->
-    <!-- Portfolio Section -->
 <main>
 <section id="projects" class="section">
 <h2>Portfolio</h2>
 <div id="projects-list">
 
 <!-- Power BI Project Card -->
-          <!-- Your Power BI project card goes here -->
-          <article class="card project-card">
-            <div class="project-title">
-              <strong>1. Power BI — Sales Dashboard</strong>
-              <span class="meta">Power BI • DAX • Data Modeling</span>
-            </div>
-            <div class="project-body">
-              <p class="meta">Business Problem</p>
-              <ul>
-                <li>LARA Company needed a data-driven insight into sales performance, growth patterns, and revenue trends.</li>
-              </ul>
-              <p class="meta">Goals</p>
-              <ul>
-                <li>Conduct sales analysis across all categories and products.</li>
-              </ul>
-              <p class="meta">What Output Got?</p>
-              <ul>
-                <li>An interactive Power BI Sales Dashboard featuring KPIs, top products, and detailed insights.</li>
-              </ul>
-              <!-- Images -->
-              <div class="thumbs">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" onclick="openLightbox(this)">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" onclick="openLightbox(this)">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" onclick="openLightbox(this)">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" onclick="openLightbox(this)">
-              </div>
-              <div class="links">
-                <a href="https://github.com/athiramolps/Power-BI--Sales-Dashboard" target="_blank" class="btn">Go to Project</a>
-              </div>
-            </div>
-          </article>
+<article class="card project-card">
+  <div class="project-title">
+    <strong>1. Power BI — Sales Dashboard</strong>
+    <span class="meta">Power BI • DAX • Data Modeling</span>
+  </div>
+  <div class="project-body">
+    <p class="meta">Business Problem</p>
+    <ul>
+      <li>LARA Company needed a data-driven insight into sales performance, growth patterns, and revenue trends.</li>
+    </ul>
+    <p class="meta">Goals</p>
+    <ul>
+      <li>Conduct sales analysis across all categories and products.</li>
+    </ul>
+    <p class="meta">What Output Got?</p>
+    <ul>
+      <li>An interactive Power BI Sales Dashboard featuring KPIs, top products, and detailed insights.</li>
+    </ul>
+    <div class="thumbs">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" onclick="openLightbox(this)">
+    </div>
+    <div class="links">
+      <a href="https://github.com/athiramolps/Power-BI--Sales-Dashboard" target="_blank" class="btn">Go to Project</a>
+    </div>
+  </div>
+</article>
 
 <!-- Tableau Admissions Dashboard -->
-          <!-- Your Tableau admissions card goes here -->
-          <article class="card project-card">
-            <div class="project-title">
-              <strong>2. Tableau — Admissions Dashboard | Education</strong>
-              <span class="meta">Tableau • Education • Data Visualization</span>
-            </div>
-            <div class="project-body">
-              <p class="meta">Business Problem</p>
-              <ul>
-                <li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li>
-              </ul>
-              <p class="meta">Goals</p>
-              <ul>
-                <li>Develop an interactive admissions dashboard to visualize applications and enrollments.</li>
-              </ul>
-              <p class="meta">What Output Got?</p>
-              <ul>
-                <li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li>
-              </ul>
-              <!-- Images -->
-              <div class="thumbs">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/1.png" onclick="openLightbox(this)">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/2.png" onclick="openLightbox(this)">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/3.png" onclick="openLightbox(this)">
-                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/4.png" onclick="openLightbox(this)">
-              </div>
-              <div class="links">
-                <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AdmissionsDashboardEducation/Overview" target="_blank" class="btn">Go to Project</a>
-              </div>
-            </div>
-          </article>
+<article class="card project-card">
+  <div class="project-title">
+    <strong>2. Tableau — Admissions Dashboard | Education</strong>
+    <span class="meta">Tableau • Education • Data Visualization</span>
+  </div>
+  <div class="project-body">
+    <p class="meta">Business Problem</p>
+    <ul>
+      <li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li>
+    </ul>
+    <p class="meta">Goals</p>
+    <ul>
+      <li>Develop an interactive admissions dashboard to visualize applications and enrollments.</li>
+    </ul>
+    <p class="meta">What Output Got?</p>
+    <ul>
+      <li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li>
+    </ul>
+    <div class="thumbs">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/1.png" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/2.png" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/3.png" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/4.png" onclick="openLightbox(this)">
+    </div>
+    <div class="links">
+      <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AdmissionsDashboardEducation/Overview" target="_blank" class="btn">Go to Project</a>
+    </div>
+  </div>
+</article>
 
 <!-- Camden Traffic Tableau Dashboard -->
-          <!-- Your Camden Tableau project card goes here -->
-          <article class="card project-card">
-            <div class="project-title">
-              <strong>10. Tableau — Camden Traffic Accidents Analysis (2015–2019)</strong>
-              <span class="meta">Tableau • Traffic Analysis • Data Visualization</span>
-            </div>
-            <div class="project-body">
-              <p class="meta">Business Problem</p>
-              <ul>
-                <li>Camden, UK faced frequent road traffic accidents, but limited insight into causes, severity, timing, and road user involvement.</li>
-              </ul>
-              <p class="meta">Goals</p>
-              <ul>
-                <li>Analyze accident severity (fatal, serious, slight) to understand collision impact.</li>
-              </ul>
-              <p class="meta">What Output Got?</p>
-              <ul>
-                <li>Interactive Tableau dashboard showing accident severity, trends, and road user involvement.</li>
-              </ul>
+<article class="card project-card">
+  <div class="project-title">
+    <strong>10. Tableau — Camden Traffic Accidents Analysis (2015–2019)</strong>
+    <span class="meta">Tableau • Traffic Analysis • Data Visualization</span>
+  </div>
+  <div class="project-body">
+    <p class="meta">Business Problem</p>
+    <ul>
+      <li>Camden, UK faced frequent road traffic accidents, but limited insight into causes, severity, timing, and road user involvement.</li>
+    </ul>
+    <p class="meta">Goals</p>
+    <ul>
+      <li>Analyze accident severity (fatal, serious, slight) to understand collision impact.</li>
+    </ul>
+    <p class="meta">What Output Got?</p>
+    <ul>
+      <li>Interactive Tableau dashboard showing accident severity, trends, and road user involvement.</li>
+    </ul>
 
-              <div style="height:12px;"></div>
-              <!-- Embedded Tableau Dashboard -->
-              <div class='tableauPlaceholder' id='viz1758106064817' style='position: relative; margin:0 auto;'>
-                <noscript>
-                  <a href='#'>
-                    <img alt='Camden Traffic Dashboard' src='https://public.tableau.com/static/images/Wh/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC/1_rss.png' style='border: none' />
-                  </a>
-                </noscript>
-                <object class='tableauViz' style='display:block; margin:0 auto;'>
-                  <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                  <param name='embed_code_version' value='3' /> 
-                  <param name='site_root' value='' />
-                  <param name='name' value='WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC' />
-                  <param name='tabs' value='no' />
-                  <param name='toolbar' value='yes' />
-                </object>
-              </div>
-              <script type='text/javascript'>
-                var divElement = document.getElementById('viz1758106064817');
-                var vizElement = divElement.getElementsByTagName('object')[0];
-                vizElement.style.width = '100%';
-                vizElement.style.height = '800px';
-                var scriptElement = document.createElement('script');
-                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-                vizElement.parentNode.insertBefore(scriptElement, vizElement);
-              </script>
+    <!-- Embedded Tableau Dashboard -->
+    <div class='tableauPlaceholder' id='viz1758106064817' style='position: relative; margin:0 auto;'>
+      <noscript>
+        <a href='#'>
+          <img alt='Camden Traffic Dashboard' src='https://public.tableau.com/static/images/Wh/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC/1_rss.png' style='border: none' />
+        </a>
+      </noscript>
+      <object class='tableauViz' style='display:block; margin:0 auto;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+        <param name='embed_code_version' value='3' /> 
+        <param name='site_root' value='' />
+        <param name='name' value='WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+      </object>
+    </div>
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1758106064817');
+      var vizElement = divElement.getElementsByTagName('object')[0];
+      vizElement.style.width = '100%';
+      vizElement.style.height = '800px';
+      var scriptElement = document.createElement('script');
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
 
-              <div class="links">
-                <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC" target="_blank" class="btn">Go to Project</a>
-              </div>
-            </div>
-          </article>
+    <div class="links">
+      <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC" target="_blank" class="btn">Go to Project</a>
+    </div>
+  </div>
+</article>
 
 </div>
 </section>
 
-</main>
+<!-- Skills Section -->
+<section id="skills" class="section">
+<h2>Skills</h2>
+<div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+  <div class="card"><strong>Technical</strong><p class="meta">Python, Power BI, Tableau, Azure, Excel, SQL, Git</p></div>
+  <div class="card"><strong>Data & Analysis</strong><p class="meta">Forecasting, ETL, Dashboard design, Data modelling</p></div>
+  <div class="card"><strong>Tools</strong><p class="meta">Jupyter, GitHub, Colab, Power BI Service</p></div>
+</div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
-        <div class="card"><strong>Technical</strong><p class="meta">Python, Power BI, Tableau, Azure, Excel, SQL, Git</p></div>
-        <div class="card"><strong>Data & Analysis</strong><p class="meta">Forecasting, ETL, Dashboard design, Data modelling</p></div>
-        <div class="card"><strong>Tools</strong><p class="meta">Jupyter, GitHub, Colab, Power BI Service</p></div>
-      </div>
-    </section>
+<!-- Contact Section -->
+<section id="contact" class="section">
+<h2>Contact</h2>
+<div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
+  <p style="max-width:720px;color:var(--muted)">Thanks for looking through my work.</p>
+  <div class="contact">
+    <a class="btn" href="https://github.com/athiramolps" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <p style="max-width:720px;color:var(--muted)">Thanks for looking through my work.</p>
-        <div class="contact">
-          <a class="btn" href="https://github.com/athiramolps" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </section>
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-      <span class="close" onclick="closeLightbox()">&times;</span>
-      <img id="lightbox-img" class="lightbox-content" alt="Full View">
-    </div>
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" class="lightbox-content" alt="Full View">
+</div>
 
 <footer>
 <small>© Athiramol PS — Built with GitHub Pages</small>
 </footer>
 </div>
 
-  <!-- Lightbox Script -->
+<!-- Lightbox Script -->
 <script>
-    function openLightbox(imgElement) {
-      var lightbox = document.getElementById("lightbox");
-      var lightboxImg = document.getElementById("lightbox-img");
-      lightbox.style.display = "block";
-      lightboxImg.src = imgElement.src;
-    }
+function openLightbox(imgElement) {
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  lightbox.style.display = "block";
+  lightboxImg.src = imgElement.src;
+}
 
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
-  function openLightbox(imgElement) {
-    var lightbox = document.getElementById("lightbox");
-    var lightboxImg = document.getElementById("lightbox-img");
-    lightbox.style.display = "block";
-    lightboxImg.src = imgElement.src;
-  }
-  function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
-  }
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
 </script>
-
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" class="lightbox-content" alt="Full View">
-  </div>
-
 </body>
 </html>
