@@ -334,39 +334,97 @@ function closeLightbox() {
 
 
 
-          <!-- Project 3 -->
-          <article class="card project-card">
-            <div class="project-title">
-              <strong>3. Python — Churn Prediction</strong>
-              <span class="meta">Python • Scikit-learn</span>
-            </div>
-            <div class="project-body">
-              <p class="meta">Business requirements</p>
-              <ul>
-                <li>Predict which customers are likely to churn</li>
-              </ul>
-              <p class="meta">Goals</p>
-              <ul>
-                <li>Reduce customer churn by 10%</li>
-              </ul>
-              <p class="meta">Analysis Steps</p>
-              <ul>
-                <li>Data preprocessing</li>
-                <li>Feature selection</li>
-                <li>Classification models</li>
-              </ul>
-              <p class="meta">Solution</p>
-              <ul>
-                <li>Built model with 85% accuracy and provided actionable insights for retention.</li>
-              </ul>
-              <div class="thumb">Output image 1</div>
-              <div class="thumb">Output image 2</div>
-              <div class="links">
-                <a href="#">View repo</a>
-                <a href="#">View report</a>
-              </div>
-            </div>
-          </article>
+<!-- Tableau Project Card -->
+<article class="card project-card">
+  <div class="project-title">
+    <strong>10. Tableau — Camden Traffic Accidents Analysis (2015–2019)</strong>
+    <span class="meta">Tableau • Traffic Analysis • Data Visualization</span>
+  </div>
+  <div class="project-body">
+    
+    <p class="meta">Business Problem</p>
+    <ul>
+      <li>Camden, UK faced frequent road traffic accidents, but limited insight into causes, severity, timing, and road user involvement.</li>
+      <li>This made it challenging for authorities to implement effective road safety measures.</li>
+    </ul>
+
+    <p class="meta">Goals</p>
+    <ul>
+      <li>Analyze accident severity (fatal, serious, slight) to understand collision impact.</li>
+      <li>Examine temporal patterns to identify peak accident times and days.</li>
+      <li>Identify types of road users involved (pedestrians, cyclists, drivers).</li>
+      <li>Map accident hotspots to support targeted safety interventions.</li>
+      <li>Explore contributing factors like weather, lighting, and road conditions.</li>
+    </ul>
+
+    <p class="meta">What Output Got?</p>
+    <ul>
+      <li>Interactive Tableau dashboard showing accident severity, trends, and road user involvement.</li>
+      <li>Geographical hotspot mapping highlighting high-risk locations in Camden.</li>
+      <li>Insights into contributing factors and patterns for planners and authorities.</li>
+      <li>A comprehensive visualization tool for monitoring, analyzing, and planning interventions.</li>
+    </ul>
+
+    <!-- Add space before embedded dashboard -->
+    <div style="height:12px;"></div>
+
+    <!-- Embedded Tableau Dashboard -->
+    <div class="tableau-dashboard">
+      <div class='tableauPlaceholder' id='viz1758106064817' style='position: relative; margin:0 auto;'>
+        <noscript>
+          <a href='#'>
+            <img alt='Camden Traffic Dashboard' src='https://public.tableau.com/static/images/Wh/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC/1_rss.png' style='border: none' />
+          </a>
+        </noscript>
+        <object class='tableauViz' style='display:block; margin:0 auto;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+          <param name='embed_code_version' value='3' /> 
+          <param name='site_root' value='' />
+          <param name='name' value='WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+        </object>
+      </div>
+    </div>
+
+    <!-- Project Button -->
+    <div class="links">
+      <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/WhatarethecausesofaccidentsinCamdenUK2015to2019/CAMDENTRAFFIC" 
+         target="_blank" 
+         class="btn">
+         Go to Project
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- CSS for Tableau Dashboard -->
+<style>
+.tableau-dashboard {
+  width: 100%;
+  height: 650px; /* padded card height */
+  overflow: hidden;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.tableau-dashboard .tableauViz {
+  width: 1200px; /* original width */
+  height: 8727px; /* original height */
+  transform: scale(0.075); /* shrink to fit card height */
+  transform-origin: top center; /* center horizontally */
+  display: inline-block;
+}
+</style>
+
+
+
+
+
+
+
+
+          
 
           <!-- Project 4 -->
           <article class="card project-card">
