@@ -162,18 +162,10 @@
     
     <!-- Image Grid -->
     <div class="thumbs">
-      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" target="_blank">
-        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" alt="Power BI Sales Dashboard Preview 1">
-      </a>
-      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" target="_blank">
-        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" alt="Power BI Sales Dashboard Preview 2">
-      </a>
-      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" target="_blank">
-        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" alt="Power BI Sales Dashboard Preview 3">
-      </a>
-      <a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" target="_blank">
-        <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" alt="Power BI Sales Dashboard Preview 4">
-      </a>
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" alt="Power BI Sales Dashboard Preview 1" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" alt="Power BI Sales Dashboard Preview 2" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/3.jpeg" alt="Power BI Sales Dashboard Preview 3" onclick="openLightbox(this)">
+      <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/4.jpeg" alt="Power BI Sales Dashboard Preview 4" onclick="openLightbox(this)">
     </div>
     
     <div class="links">
@@ -182,7 +174,13 @@
   </div>
 </article>
 
-<!-- Add this CSS somewhere in your stylesheet -->
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" class="lightbox-content" alt="Full View">
+</div>
+
+<!-- Add CSS -->
 <style>
 .thumbs {
   display: grid;
@@ -201,7 +199,60 @@
 .thumbs img:hover {
   transform: scale(1.05);
 }
+
+/* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #f00;
+}
 </style>
+
+<!-- Add JavaScript -->
+<script>
+function openLightbox(imgElement) {
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  lightbox.style.display = "block";
+  lightboxImg.src = imgElement.src;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+ 
 
   </div>
 </article>
