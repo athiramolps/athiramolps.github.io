@@ -466,6 +466,17 @@ Entry Level Data Analyst 📊 with experience in data visualization, business in
 
 
 
+Yes, you are right. The projects in the two rows are not perfectly aligned because the container for each project has different heights due to the varying lengths of the project titles. Some titles, like "Ad-HOC Reporting" and "Machine Learning," are so long they wrap to a second line. This shifts the "View Project" button down, causing the misalignment.
+
+The simplest solution is to make all the project title containers have a fixed height. This way, whether the title is one line or two, the height of the container will be the same, and the button will always be in the same position.
+
+-----
+
+### Corrected Code
+
+You can fix this by adding a fixed `height` to the `h3` element for the project titles. I've also added `display: flex;` and `align-items: flex-end;` to the `.tool-card` to ensure the buttons are all aligned to the bottom.
+
+```html
 <section id="additional-tools" style="margin-bottom:40px;">
   <div class="card project-card" style="padding:30px; background-color:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
     <div class="project-title">
@@ -474,95 +485,81 @@ Entry Level Data Analyst 📊 with experience in data visualization, business in
     <div class="project-body">
       <div class="tools-container" style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
 
-        <!-- IBM Cognos Dashboard -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">IBM Cognos Dashboard</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">IBM Cognos Dashboard</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- QlikSense Dashboard -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">QlikSense Dashboard</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">QlikSense Dashboard</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Alteryx -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Alteryx</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Alteryx</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Ad-HOC Reporting - Google Looker Studio -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Ad-HOC Reporting<br>Google Looker Studio</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Ad-HOC Reporting<br>Google Looker Studio</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- A/B Testing with Python -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">A/B Testing with Python</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">A/B Testing with Python</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- ColourSense -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">ColourSense</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">ColourSense</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- TypeMood -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">TypeMood</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">TypeMood</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- DashTheme -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">DashTheme</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">DashTheme</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Excel A/B Testing -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Excel A/B Testing</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Excel A/B Testing</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Data Collection Survey with Jotform -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Data Collection Survey<br>with Jotform</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Data Collection Survey<br>with Jotform</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Power BI - Sentiment Analysis -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Power BI - Sentiment Analysis</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Power BI - Sentiment Analysis</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Power BI - Market Basket Analysis -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Power BI - Market Basket Analysis</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Power BI - Market Basket Analysis</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Power BI - Mobile Report -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Power BI - Mobile Report</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Power BI - Mobile Report</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
 
-        <!-- Machine Learning - Predicting Car Prices -->
-        <div class="tool-card" style="text-align:center;">
-          <h3 style="font-size:14px; margin-bottom:8px;">Machine Learning<br>Predicting Car Prices</h3>
+        <div class="tool-card" style="text-align:center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 140px;">
+          <h3 style="font-size:14px; margin-bottom:8px; height: 36px; display: flex; justify-content: center; align-items: center;">Machine Learning<br>Predicting Car Prices</h3>
           <a href="https://www.behance.net/96569db7" target="_blank" class="btn" style="padding:6px 12px; font-size:12px;">View Project</a>
         </div>
-
+        
       </div>
     </div>
   </div>
 </section>
-
+```
 
 
 
