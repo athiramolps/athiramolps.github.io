@@ -1,89 +1,291 @@
-<!-- Tableau Project Card -->
-<article class="card project-card">
-  <div class="project-title">
-    <strong>3. Tableau — Admissions Dashboard | Education</strong>
-    <span class="meta">Tableau • Education • Data Visualization</span>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Athiramol — Portfolio</title>
+  <style>
+    :root {
+      --accent:#0b78d1;
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --muted:#666;
+    }
+
+    * { box-sizing:border-box }
+    body {
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      background:var(--bg);
+      color:#111;
+    }
+
+    .container { max-width:1100px; margin:0 auto; padding:28px }
+
+    header { display:flex; flex-direction:column; gap:20px; align-items:center; padding:28px 0; text-align:center }
+    .avatar {
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      overflow:hidden;
+      border:4px solid #fff;
+      box-shadow:0 6px 20px rgba(11,120,209,.2);
+    }
+    .avatar img { width:100%; height:100%; object-fit:cover }
+
+    h1 { margin:12px 0 6px; font-size:32px }
+    p.lead { margin:0 0 12px; color:var(--muted); line-height:1.5; max-width:800px }
+
+    .section { margin-top:40px }
+    .card {
+      background:var(--card);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(12,18,36,.04);
+    }
+    .project-title { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px }
+    .meta { font-size:13px; color:var(--muted) }
+    .project-body { margin-top:12px }
+    .project-body ul { padding-left:18px; margin:6px 0 }
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .thumbs img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    .thumbs img:hover { transform: scale(1.05); }
+
+    .links { margin-top:12px; text-align:center }
+    .links a {
+      display:inline-block;
+      margin-right:8px;
+      padding:10px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:13px;
+      color:#fff;
+      background:var(--accent);
+      font-weight:600;
+    }
+
+    footer { margin:40px 0; padding:20px; text-align:center; color:var(--muted) }
+    .contact { display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap }
+
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .lightbox-content {
+      display: block;
+      margin: auto;
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .close:hover { color: #f00 }
+
+    /* Tableau Dashboard Card */
+    .tableau-dashboard {
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+      margin-top: 12px;
+      text-align: center;
+    }
+    .tableau-dashboard .tableauViz {
+      width: 3288px;
+      height: 1868px;
+      transform: scale(0.18); /* Shrink to fit card */
+      transform-origin: top center;
+      display: inline-block;
+    }
+
+    @media (max-width:640px){
+      header { padding:20px }
+      .avatar { width:120px; height:120px }
+      h1 { font-size:28px }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Section -->
+    <header>
+      <div class="avatar"><img src="images/a.jpg" alt="Athiramol PS"></div>
+      <h1>Athiramol PS</h1>
+      <p class="lead">
+        Entry Level Data Analyst with experience in data visualization, business intelligence, and performance tracking, skilled at transforming complex datasets into actionable insights.
+      </p>
+    </header>
+
+    <!-- Portfolio Section -->
+    <main>
+      <section id="projects" class="section">
+        <h2>Portfolio</h2>
+        <div id="projects-list">
+
+          <!-- Power BI Project -->
+          <article class="card project-card">
+            <div class="project-title">
+              <strong>1. Power BI — Sales Dashboard</strong>
+              <span class="meta">Power BI • DAX • Data Modeling</span>
+            </div>
+            <div class="project-body">
+              <p class="meta">Business Problem</p>
+              <ul>
+                <li>LARA Company needed a data-driven insight into sales performance, growth patterns, and revenue trends.</li>
+                <li>The business lacked a centralized view of its sales operations, making it difficult to identify top-performing products, high-value customers, or key revenue drivers.</li>
+              </ul>
+              <p class="meta">Goals</p>
+              <ul>
+                <li>Conduct sales analysis across all categories and products.</li>
+                <li>Track KPI metrics such as revenue, profit, and growth rates.</li>
+                <li>Analyze category-level sales to identify top-performing segments.</li>
+                <li>Examine yearly sales and profit trends to monitor growth.</li>
+                <li>Identify top cities and customers by sales for targeted strategies.</li>
+                <li>Evaluate sales composition by product hierarchy for detailed insights.</li>
+                <li>Provide strategy recommendations for revenue growth and performance improvement.</li>
+              </ul>
+              <p class="meta">What Output Got?</p>
+              <ul>
+                <li>An interactive Power BI Sales Dashboard with KPIs, visualizations, and actionable insights for management.</li>
+              </ul>
+              <div class="thumbs">
+                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/1.jpeg" alt="Power BI Sales Dashboard Preview 1" onclick="openLightbox(this)">
+                <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/powerbi/2.jpeg" alt="Power BI Sales Dashboard Preview 2" onclick="openLightbox(this)">
+              </div>
+              <div class="links">
+                <a href="https://github.com/athiramolps/Power-BI--Sales-Dashboard" target="_blank">Go to Project</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tableau Project -->
+          <article class="card project-card">
+            <div class="project-title">
+              <strong>2. Tableau — Admissions Dashboard | Education</strong>
+              <span class="meta">Tableau • Education • Data Visualization</span>
+            </div>
+            <div class="project-body">
+              <p class="meta">Business Problem</p>
+              <ul>
+                <li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li>
+                <li>Without a centralized, visual reporting system, it is difficult to identify trends and monitor applicant conversion.</li>
+              </ul>
+              <p class="meta">Goals</p>
+              <ul>
+                <li>Develop an interactive admissions dashboard to visualize applications and enrollments.</li>
+                <li>Provide insights into program-level demand, especially for medical-related programs.</li>
+                <li>Segment applicants by demographics (age, gender, ethnicity, country) to support diversity tracking.</li>
+                <li>Enable drill-down into individual applicant details for deeper analysis.</li>
+                <li>Support decision-making for admissions officers and academic planners.</li>
+              </ul>
+              <p class="meta">What Output Got?</p>
+              <ul>
+                <li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li>
+                <li>Improved ability for stakeholders to monitor admissions performance and analyze applicant diversity.</li>
+                <li>A scalable solution that supports data-driven admissions planning and reporting.</li>
+              </ul>
+
+              <!-- Embedded Tableau Dashboard -->
+              <div class="tableau-dashboard">
+                <div class='tableauPlaceholder' id='viz1758102007517'>
+                  <noscript>
+                    <a href='#'>
+                      <img alt='Admissions Dashboard Overview' src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' style='border:none' />
+                    </a>
+                  </noscript>
+                  <object class='tableauViz'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                    <param name='embed_code_version' value='3' /> 
+                    <param name='site_root' value='' />
+                    <param name='name' value='AdmissionsDashboardEducation/Overview' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                  </object>
+                </div>
+              </div>
+
+              <div class="links">
+                <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AdmissionsDashboardEducation/Overview" target="_blank">Go to Project</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Add other Python projects here as needed (3 → 10) -->
+
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+          <div class="card"><strong>Technical</strong><p class="meta">Python, Power BI, Tableau, Azure, Excel, SQL, Git</p></div>
+          <div class="card"><strong>Data & Analysis</strong><p class="meta">Forecasting, ETL, Dashboard design, Data modelling</p></div>
+          <div class="card"><strong>Tools</strong><p class="meta">Jupyter, GitHub, Colab, Power BI Service</p></div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
+          <p style="max-width:720px;color:var(--muted)">Thanks for looking through my work.</p>
+          <div class="contact">
+            <a class="btn" href="https://github.com/athiramolps" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>© Athiramol PS — Built with GitHub Pages</small>
+    </footer>
   </div>
-  <div class="project-body">
 
-    <p class="meta">Business Problem</p>
-    <ul>
-      <li>Educational institutions often struggle to manage and interpret large volumes of applicant data.</li>
-      <li>Without a centralized, visual reporting system, it is difficult to identify trends and monitor applicant conversion.</li>
-    </ul>
-
-    <p class="meta">Goals</p>
-    <ul>
-      <li>Develop an interactive admissions dashboard to visualize applications and enrollments.</li>
-      <li>Provide insights into program-level demand, especially for medical-related programs.</li>
-      <li>Segment applicants by demographics (age, gender, ethnicity, country) to support diversity tracking.</li>
-      <li>Enable drill-down into individual applicant details for deeper analysis.</li>
-      <li>Support decision-making for admissions officers and academic planners.</li>
-    </ul>
-
-    <p class="meta">What Output Got?</p>
-    <ul>
-      <li>A Tableau Admissions Dashboard with multiple views: Overview, Programs, Demographics, Applicant Details.</li>
-      <li>Improved ability for stakeholders to monitor admissions performance and analyze applicant diversity.</li>
-      <li>A scalable solution that supports data-driven admissions planning and reporting.</li>
-    </ul>
-
-    <!-- Tableau Embedded Dashboard -->
-    <div class="tableau-dashboard">
-      <div class='tableauPlaceholder' id='viz1758102007517' style='position: relative; margin:0 auto;'>
-        <noscript>
-          <a href='#'>
-            <img alt='Admissions Dashboard Overview' src='https://public.tableau.com/static/images/Ad/AdmissionsDashboardEducation/Overview/1_rss.png' style='border: none' />
-          </a>
-        </noscript>
-        <object class='tableauViz' style='display:block; margin:0 auto;'>
-          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-          <param name='embed_code_version' value='3' /> 
-          <param name='site_root' value='' />
-          <param name='name' value='AdmissionsDashboardEducation/Overview' />
-          <param name='tabs' value='no' />
-          <param name='toolbar' value='yes' />
-        </object>
-      </div>
-    </div>
-
-    <!-- Project Button -->
-    <div class="links">
-      <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AdmissionsDashboardEducation/Overview" 
-         target="_blank" 
-         class="btn">
-         Go to Project
-      </a>
-    </div>
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" alt="Full View">
   </div>
-</article>
 
-<!-- CSS for Tableau Dashboard -->
-<style>
-.tableau-dashboard {
-  width: 100%;
-  height: 600px; /* padded card height */
-  overflow: hidden;
-  margin-top: 12px;
-  text-align: center;
-}
+  <script>
+    function openLightbox(imgElement) {
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImg = document.getElementById("lightbox-img");
+      lightbox.style.display = "block";
+      lightboxImg.src = imgElement.src;
+    }
 
-.tableau-dashboard .tableauViz {
-  width: 3288px; /* original width */
-  height: 1868px; /* original height */
-  transform: scale(0.18); /* shrink to fit card width */
-  transform-origin: top center; /* center horizontally */
-  display: inline-block;
-}
-</style>
-
-<!-- Tableau API Script -->
-<script type='text/javascript'>
-  var divElement = document.getElementById('viz1758102007517');                    
-  var vizElement = divElement.getElementsByTagName('object')[0];                    
-  vizElement.style.width='3288px';
-  vizElement.style.height='1868px';
-  var scriptElement = document.createElement('script');                    
-  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-  vizElement.parentNode.insertBefore(scriptElement, vizElement);
-</script>
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+</body>
+</html>
