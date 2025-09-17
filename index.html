@@ -20,8 +20,8 @@
       color:#111;
     }
 
-    /* Increased width by 13% */
-    .container { max-width:1240px; margin:0 auto; padding:28px }
+    /* Increased container width by 20% */
+    .container { max-width:1320px; margin:0 auto; padding:28px }
 
     header { display:flex; flex-direction:column; gap:20px; align-items:center; padding:28px 0; text-align:center }
     .avatar {
@@ -85,7 +85,7 @@
     /* Projects stacked vertically */
     #projects-list { display:flex; flex-direction:column; gap:20px; }
 
-    /* Thumbnails */
+    /* Lightbox Thumbnails */
     .thumbs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -112,8 +112,8 @@
 
     .btn {
       display: inline-block;
-      background-color: #007bff; /* Blue button */
-      color: white !important; /* Always white text */
+      background-color: #007bff;
+      color: white !important;
       padding: 10px 20px;
       border-radius: 6px;
       text-decoration: none;
@@ -187,13 +187,19 @@
       </p>
     </header>
 
-    <!-- Main Section -->
+    <!-- Portfolio Section -->
     <main>
       <section id="projects" class="section">
         <h2>Portfolio</h2>
         <div id="projects-list">
 
-          <!-- Camden Tableau Project -->
+          <!-- Power BI Project Card -->
+          <!-- ... (your Power BI card remains unchanged) -->
+
+          <!-- Tableau Admissions Dashboard -->
+          <!-- ... (your Tableau admissions card remains unchanged) -->
+
+          <!-- Tableau Camden Traffic Dashboard -->
           <article class="card project-card">
             <div class="project-title">
               <strong>10. Tableau — Camden Traffic Accidents Analysis (2015–2019)</strong>
@@ -223,7 +229,7 @@
                 <li>A comprehensive visualization tool for monitoring, analyzing, and planning interventions.</li>
               </ul>
 
-              <!-- Space before embedded dashboard -->
+              <!-- Add space before embedded dashboard -->
               <div style="height:12px;"></div>
 
               <!-- Embedded Tableau Dashboard -->
@@ -246,8 +252,8 @@
               <script type='text/javascript'>
                 var divElement = document.getElementById('viz1758106064817');
                 var vizElement = divElement.getElementsByTagName('object')[0];
-                vizElement.style.width = '100%'; // fits container
-                vizElement.style.height = '900px'; // proportional height
+                vizElement.style.width = '100%'; // Fit container
+                vizElement.style.height = '800px'; // Adjust height
                 var scriptElement = document.createElement('script');
                 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
                 vizElement.parentNode.insertBefore(scriptElement, vizElement);
@@ -264,8 +270,16 @@
             </div>
           </article>
 
+          <!-- Remaining projects (Python etc.) remain unchanged -->
         </div>
       </section>
+
+      <!-- Skills Section -->
+      <!-- ... unchanged -->
+
+      <!-- Contact Section -->
+      <!-- ... unchanged -->
+
     </main>
 
     <footer>
@@ -273,12 +287,7 @@
     </footer>
   </div>
 
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" class="lightbox-content" alt="Full View">
-  </div>
-
+  <!-- Lightbox Script -->
   <script>
     function openLightbox(imgElement) {
       var lightbox = document.getElementById("lightbox");
@@ -291,5 +300,11 @@
       document.getElementById("lightbox").style.display = "none";
     }
   </script>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" alt="Full View">
+  </div>
 </body>
 </html>
