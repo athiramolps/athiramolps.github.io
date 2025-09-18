@@ -600,39 +600,18 @@ footer {
 <!-- Titles in a row -->
 <div class="project-body">
   <ul style="list-style:none; padding-left:0; margin:0; display:flex; flex-wrap:wrap; gap:20px;">
-    <li><a href="#" onclick="openLightbox('https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/data_excel.pdf')">1. Introduction to Data &amp; Excel</a></li>
-    <li><a href="#" onclick="openLightbox('https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/tableau_powerbi.pdf')">2. Introduction to Tableau &amp; Power BI</a></li>
-    <li><a href="#" onclick="openLightbox('https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/sql.pdf')">3. Databases Design &amp; SQL</a></li>
-    <li><a href="#" onclick="openLightbox('https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/azure.pdf')">4. Fundamentals of Azure</a></li>
-    <li><a href="#" onclick="openLightbox('https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/python.pdf')">5. Introduction to Python</a></li>
+    <li><a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/data_excel.pdf" download>1. Introduction to Data &amp; Excel</a></li>
+    <li><a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/tableau_powerbi.pdf" download>2. Introduction to Tableau &amp; Power BI</a></li>
+    <li><a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/sql.pdf" download>3. Databases Design &amp; SQL</a></li>
+    <li><a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/azure.pdf" download>4. Fundamentals of Azure</a></li>
+    <li><a href="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/workbooks/python.pdf" download>5. Introduction to Python</a></li>
     <li><a href="https://sites.google.com/view/athiramolps/home" target="_blank">Reflective Practice</a></li>
   </ul>
 </div>
 
-<!-- Lightbox -->
-<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
-  <div style="position:relative; width:80%; height:90%; background:#fff; border-radius:8px; overflow:hidden;">
-    <span onclick="closeLightbox()" style="position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; color:#fff; cursor:pointer; z-index:1100;">&times;</span>
-    <iframe id="pdfViewer" src="" style="width:100%; height:100%; border:none;"></iframe>
-  </div>
-</div>
-
-<script>
-  function openLightbox(pdfUrl) {
-    document.getElementById('pdfViewer').src = pdfUrl;
-    document.getElementById('lightbox').style.display = 'flex';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-    document.getElementById('pdfViewer').src = ""; // clear to stop loading
-  }
-</script>
 
 
   
-  </div>
-</section>
 
 
 
