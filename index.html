@@ -957,8 +957,6 @@ section h2::after {
         </a>
       </div>
 
-      <!-- Add more slides here if needed -->
-
     </div>
     <button class="next">&#10095;</button>
   </div>
@@ -966,13 +964,13 @@ section h2::after {
 
 <style>
 #dashboard-slider { text-align: center; margin: 50px 0; }
-#dashboard-slider h2 { color: #0b78d1; margin-bottom: 20px; }
-.slider-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; }
-.slides { display: flex; transition: transform 0.5s ease; }
-.slide { min-width: 100%; box-sizing: border-box; position: relative; }
-.slide img { width: 100%; border-radius: 8px; }
-.slide-title { position: absolute; bottom: 10px; left: 15px; color: white; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px; }
-.prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; margin-top: -20px; padding: 10px; color: white; font-weight: bold; font-size: 24px; background: rgba(0,0,0,0.5); border: none; border-radius: 5px; user-select: none; }
+#dashboard-slider h2 { color: #0b78d1; margin-bottom: 20px; font-size: 22px; }
+.slider-container { position: relative; max-width: 600px; height: 350px; margin: 0 auto; overflow: hidden; }
+.slides { display: flex; transition: transform 0.5s ease; height: 100%; }
+.slide { min-width: 100%; box-sizing: border-box; position: relative; height: 100%; }
+.slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.slide-title { position: absolute; bottom: 10px; left: 15px; color: white; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px; font-size: 14px; }
+.prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; margin-top: -20px; padding: 8px; color: white; font-weight: bold; font-size: 20px; background: rgba(0,0,0,0.5); border: none; border-radius: 5px; user-select: none; }
 .prev { left: 10px; } .next { right: 10px; }
 </style>
 
