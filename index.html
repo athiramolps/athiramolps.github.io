@@ -63,24 +63,29 @@ header h3 {
   color: var(--muted); 
 }
 
-/* Card (default, used by projects/skills etc.) */
+/* Card (default, used by most sections) */
 .card {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(12,18,36,.04);
-  background: #fff; /* keep solid white for all other sections */
+  background: #fff;
 }
 
-/* Intro box (special styling, does not affect other cards) */
+/* Intro box (special styling) */
 .intro-box {
-  margin: 20px auto;         
-  background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
-  max-width: 800px;          /* narrower like a card */
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.85);
+  max-width: 800px;
 }
 
-.lead {
-  font-size: 16px;
-  color: var(--text);
+/* Portfolio, skills, additional projects cards */
+.project-card,
+#skills .card,
+#additional-tools .card,
+#bootcamp .card,
+#contact .card {
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 /* Responsive */
@@ -89,6 +94,11 @@ header h3 {
   .avatar { width:120px; height:120px }
   h1 { font-size:28px }
   .intro-box { max-width: 95%; }
+  .project-card,
+  #skills .card,
+  #additional-tools .card,
+  #bootcamp .card,
+  #contact .card { max-width: 95%; }
 }
 </style>
 </head>
@@ -122,9 +132,12 @@ header h3 {
     </p>
   </div>
 
+  <!-- Portfolio and other sections go here (unchanged in your file) -->
+
 </div>
 </body>
 </html>
+
 
 
 
