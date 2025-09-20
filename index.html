@@ -796,171 +796,196 @@ section h2::after {
 
 
 
-<!-- Dashboard Showcase (Ready-to-use) -->
-<section id="dashboard-slider" class="padded-layout">
-  <h2>Dashboard Showcase</h2>
+<!-- ===== Dashboard Showcase (replace old section with this block) ===== -->
+<section id="dashboard-slider" class="section">
+  <div class="card project-card"> <!-- uses same card look as other sections -->
+    <h2>Dashboard Showcase</h2>
 
-  <div class="carousel-wrapper">
-    <button class="prev" aria-label="Previous slide">&#10094;</button>
+    <div class="carousel-wrapper" style="margin-top:18px;">
+      <button class="prev" aria-label="Previous slide">&#10094;</button>
 
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <!-- Repeat this <figure> block for each dashboard -->
-        <figure>
-          <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AlexandCo-SalesDashboard2023/SalesDashboard" target="_blank" rel="noopener">
-            <img src="images/alex_sales.png" alt="Alex & Co — Sales Dashboard (Tableau)">
-          </a>
-          <figcaption>Alex & Co — Sales Dashboard (Tableau)</figcaption>
-        </figure>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <!-- Replace image src with your screenshots (first page of each dashboard) -->
+          <figure>
+            <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AlexandCo-SalesDashboard2023/SalesDashboard" target="_blank" rel="noopener">
+              <img src="images/alex_sales_dashboard.png" alt="Alex and Co | Sales Dashboard 2023">
+            </a>
+            <figcaption>Alex and Co — Sales Dashboard (Tableau)</figcaption>
+          </figure>
 
-        <figure>
-          <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/ExecutivePerformanceDashboard_17378408429530/Dashboard6" target="_blank" rel="noopener">
-            <img src="images/executive_dashboard.png" alt="Executive Performance Dashboard (Tableau)">
-          </a>
-          <figcaption>Executive Performance Dashboard (Tableau)</figcaption>
-        </figure>
+          <figure>
+            <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/ExecutivePerformanceDashboard_17378408429530/Dashboard6" target="_blank" rel="noopener">
+              <img src="images/executive_performance_dashboard.png" alt="Executive Performance Dashboard">
+            </a>
+            <figcaption>Executive Performance Dashboard (Tableau)</figcaption>
+          </figure>
 
-        <figure>
-          <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AliceHospitalERDASHBOARD/OverviewDashboard1" target="_blank" rel="noopener">
-            <img src="images/alice_hospital.png" alt="Alice Hospital ER Dashboard (Tableau)">
-          </a>
-          <figcaption>Alice Hospital ER Dashboard (Tableau)</figcaption>
-        </figure>
+          <figure>
+            <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AliceHospitalERDASHBOARD/OverviewDashboard1" target="_blank" rel="noopener">
+              <img src="images/alice_hospital_er.png" alt="Alice Hospital | ER Dashboard">
+            </a>
+            <figcaption>Alice Hospital ER Dashboard (Tableau)</figcaption>
+          </figure>
 
-        <!-- add more <figure> blocks for the rest of your dashboards -->
+          <figure>
+            <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/RetailDashboard_17380992054580/Retail1" target="_blank" rel="noopener">
+              <img src="images/retail_day_theme.png" alt="Retail Dashboard | Day Theme">
+            </a>
+            <figcaption>Retail Dashboard | Day Theme (Tableau)</figcaption>
+          </figure>
+
+          <figure>
+            <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/RetailDashboardDarkTheme/Retail1" target="_blank" rel="noopener">
+              <img src="images/retail_dark_theme.png" alt="Retail Dashboard | Dark Theme">
+            </a>
+            <figcaption>Retail Dashboard | Dark Theme (Tableau)</figcaption>
+          </figure>
+
+          <!-- add the rest of your dashboards here using the same <figure> pattern -->
+        </div>
       </div>
-    </div>
 
-    <button class="next" aria-label="Next slide">&#10095;</button>
+      <button class="next" aria-label="Next slide">&#10095;</button>
+    </div>
   </div>
 </section>
 
+<!-- Scoped styles for this section (safe to paste into body) -->
 <style>
-/* Padded layout (should match your other sections) */
-.padded-layout {
-  background: white;
-  padding: 40px;
-  margin: 40px auto;
-  max-width: 1000px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
+  /* match card look used elsewhere but scoped to this section */
+  #dashboard-slider .card {
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin: 0;
+  }
 
-/* Section title */
-#dashboard-slider h2 {
-  color: black;
-  text-align: left;
-  margin-bottom: 18px;
-  font-size: 22px;
-  padding-left: 6px;
-}
+  /* title: left aligned, black (overrides your global section h2 centering) */
+  #dashboard-slider h2 {
+    color: #000;
+    text-align: left;
+    display: block; /* ensures the underline can be left-aligned */
+    font-size: 22px;
+    margin: 0 0 14px 0;
+  }
+  /* move the little accent line to align left as well */
+  #dashboard-slider h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 6px 0 0 0; /* left aligned */
+    border-radius: 2px;
+  }
 
-/* Carousel wrapper: positions arrows relative to the padded box */
-.carousel-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
+  /* Carousel layout */
+  .carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 
-/* Container holds the visible area */
-.carousel-container {
-  overflow: hidden;
-  width: 100%;
-}
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
+  }
 
-/* Track is the flex row that translates left/right */
-.carousel-track {
-  display: flex;
-  align-items: flex-start;
-  transition: transform 0.45s ease;
-  will-change: transform;
-}
+  .carousel-track {
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.45s ease;
+    will-change: transform;
+  }
 
-/* Each slide */
-.carousel-track figure {
-  flex: 0 0 auto;
-  width: 250px;            /* thumbnail width */
-  margin: 0 15px 0 0;      /* space between slides */
-  text-align: center;
-  box-sizing: border-box;
-}
+  .carousel-track figure {
+    flex: 0 0 auto;
+    width: 260px;        /* thumbnail width */
+    margin-right: 18px;  /* gap between slides */
+    text-align: center;
+    box-sizing: border-box;
+  }
 
-/* Image */
-.carousel-track img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.25s;
-}
-.carousel-track img:hover {
-  transform: scale(1.03);
-}
+  .carousel-track img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+  }
+  .carousel-track img:hover { transform: scale(1.03); }
 
-/* Caption below thumbnail */
-figcaption {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #333;
-  line-height: 1.2;
-}
+  figcaption {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.2;
+  }
 
-/* Arrows */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 8px 10px;
-  color: white;
-  background: rgba(0,0,0,0.52);
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  user-select: none;
-  z-index: 5;
-}
-.prev { left: 8px; }
-.next { right: 8px; }
-.prev[disabled], .next[disabled] {
-  opacity: 0.35;
-  cursor: default;
-}
+  /* Arrows */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 10px;
+    color: #fff;
+    background: rgba(0,0,0,0.52);
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    z-index: 10;
+    user-select: none;
+  }
+  .prev { left: 10px; }
+  .next { right: 10px; }
+  .prev[disabled], .next[disabled] { opacity: 0.35; cursor: default; }
 
-/* Make it a bit smaller on narrow screens */
-@media (max-width: 720px) {
-  .carousel-track figure { width: 180px; margin-right: 12px; }
-  .carousel-track img { height: 120px; }
-}
+  /* responsive */
+  @media (max-width: 920px) {
+    .carousel-track figure { width: 220px; margin-right: 14px; }
+    .carousel-track img { height: 140px; }
+  }
+  @media (max-width: 640px) {
+    .carousel-wrapper { padding: 8px 0; }
+    .carousel-track figure { width: 170px; margin-right: 10px; }
+    .carousel-track img { height: 120px; }
+  }
 </style>
 
+<!-- Carousel JS (safe to paste inside body after the HTML) -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const track = document.querySelector('.carousel-track');
-  const figures = Array.from(track.querySelectorAll('figure'));
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-  const container = document.querySelector('.carousel-container');
+  const track = document.querySelector('#dashboard-slider .carousel-track');
+  const container = document.querySelector('#dashboard-slider .carousel-container');
+  const prevBtn = document.querySelector('#dashboard-slider .prev');
+  const nextBtn = document.querySelector('#dashboard-slider .next');
+  if (!track || !container) return;
 
-  if (!track || figures.length === 0) return; // nothing to do
+  const figures = Array.from(track.querySelectorAll('figure'));
+  if (figures.length === 0) {
+    // hide arrows if no slides
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+    return;
+  }
 
   let slideWidth = figures[0].getBoundingClientRect().width + parseFloat(getComputedStyle(figures[0]).marginRight || 0);
   let currentIndex = 0;
 
-  function calcVisibleCount() {
-    const containerWidth = container.clientWidth;
-    return Math.max(1, Math.floor(containerWidth / slideWidth));
+  function visibleCount() {
+    return Math.max(1, Math.floor(container.clientWidth / slideWidth));
   }
 
   function updateSizes() {
-    // recalc sizes in case of resize or responsive changes
+    // recalc slideWidth and clamp currentIndex
     slideWidth = figures[0].getBoundingClientRect().width + parseFloat(getComputedStyle(figures[0]).marginRight || 0);
-    // reposition in case index is now out of bounds
-    const visibleCount = calcVisibleCount();
-    const maxIndex = Math.max(0, figures.length - visibleCount);
+    const maxIndex = Math.max(0, figures.length - visibleCount());
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     updateTrack();
     updateButtons();
@@ -972,8 +997,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateButtons() {
-    const visibleCount = calcVisibleCount();
-    const maxIndex = Math.max(0, figures.length - visibleCount);
+    const maxIndex = Math.max(0, figures.length - visibleCount());
     prevBtn.disabled = currentIndex <= 0;
     nextBtn.disabled = currentIndex >= maxIndex;
   }
@@ -985,14 +1009,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   nextBtn.addEventListener('click', () => {
-    const visibleCount = calcVisibleCount();
-    const maxIndex = Math.max(0, figures.length - visibleCount);
+    const maxIndex = Math.max(0, figures.length - visibleCount());
     currentIndex = Math.min(maxIndex, currentIndex + 1);
     updateTrack();
     updateButtons();
   });
 
-  // handle drag/touch (optional nice-to-have)
+  // drag / swipe support (pointer events)
   let isDown = false, startX = 0, startTranslate = 0;
   track.addEventListener('pointerdown', (e) => {
     isDown = true;
@@ -1007,37 +1030,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const dx = e.clientX - startX;
     track.style.transform = `translateX(${startTranslate + dx}px)`;
   });
-  track.addEventListener('pointerup', finishDrag);
-  track.addEventListener('pointercancel', finishDrag);
-  track.addEventListener('pointerleave', finishDrag);
-
-  function finishDrag(e) {
+  function finishDrag() {
     if (!isDown) return;
     isDown = false;
     track.style.transition = '';
-    // snap to nearest index
     const transform = getComputedStyle(track).transform;
     const currentTranslate = transform !== 'none' ? parseFloat(transform.split(',')[4]) : 0;
     const rawIndex = Math.round(Math.abs(currentTranslate) / slideWidth);
-    const visibleCount = calcVisibleCount();
-    const maxIndex = Math.max(0, figures.length - visibleCount);
+    const maxIndex = Math.max(0, figures.length - visibleCount());
     currentIndex = Math.min(maxIndex, Math.max(0, rawIndex));
     updateTrack();
     updateButtons();
   }
+  track.addEventListener('pointerup', finishDrag);
+  track.addEventListener('pointercancel', finishDrag);
+  track.addEventListener('pointerleave', finishDrag);
 
-  // Resize observer to recalc sizes if container or figure size change
-  let resizeTimeout;
+  // resize handling
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(updateSizes, 120);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateSizes, 120);
   });
 
-  // Initial setup
+  // initial setup
   updateSizes();
   updateButtons();
 });
 </script>
+
 
 
 
