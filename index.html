@@ -683,72 +683,45 @@ footer {
 
 <!-- Contact Section -->
 <section id="contact" class="section">
-  <h2>Connect Me</h2>
-  <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
-    <p style="max-width:720px;color:var(--muted)">Thanks for looking through my projects ☺️</p>
+  <h2>Connect With Me</h2>
+  <div class="card">
+    <p style="text-align: center; max-width: 720px; margin: 0 auto; color: var(--text-light);">
+      Thanks for looking through my portfolio. Let's connect! ☺️
+    </p>
     
-    <div class="contact" style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;">
-      
-      <!-- Behance -->
-      <div style="text-align:center;">
-        <img src="https://cdn.worldvectorlogo.com/logos/behance-1.svg" alt="Behance Logo" style="width:40px;height:40px;">
+    <div class="contact-icons">
+      <div class="contact-icon">
+        <img src="https://cdn.worldvectorlogo.com/logos/behance-1.svg" alt="Behance Logo">
         <a class="btn" href="https://www.behance.net/96569db7" target="_blank" rel="noopener">Behance</a>
       </div>
 
-      <!-- LinkedIn -->
-      <div style="text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" style="width:40px;height:40px;">
+      <div class="contact-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo">
         <a class="btn" href="https://www.linkedin.com/in/athiramolps/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <!-- Tableau Public -->
-      <div style="text-align:center;">
-        <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau Logo" style="width:40px;height:40px;">
-        <a class="btn" href="https://public.tableau.com/app/profile/athiramol.ps/vizzes" target="_blank" rel="noopener">Tableau Public</a>
+      <div class="contact-icon">
+        <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau Logo">
+        <a class="btn" href="https://public.tableau.com/app/profile/athiramol.ps/vizzes" target="_blank" rel="noopener">Tableau</a>
       </div>
 
-      <!-- Personal Website -->
-      <div style="text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="Website Logo" style="width:40px;height:40px;">
-        <a class="btn" href="https://athiramolps.weebly.com/" target="_blank" rel="noopener">Athiramol PS</a>
+      <div class="contact-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="Website Logo">
+        <a class="btn" href="https://athiramolps.weebly.com/" target="_blank" rel="noopener">Website</a>
       </div>
 
-      <!-- YouTube -->
-      <div style="text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Logo" style="width:40px;height:40px;">
-        <a class="btn" href="https://www.youtube.com/@AthysDataDive" target="_blank" rel="noopener">Athy's Data Dive</a>
+      <div class="contact-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Logo">
+        <a class="btn" href="https://www.youtube.com/@AthysDataDive" target="_blank" rel="noopener">YouTube</a>
       </div>
 
-      <!-- GitHub -->
-      <div style="text-align:center;">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" style="width:40px;height:40px;">
+      <div class="contact-icon">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
         <a class="btn" href="https://github.com/athiramolps" target="_blank" rel="noopener">GitHub</a>
       </div>
-
-      <!-- Credly -->
-      <div style="text-align:center;">
-        <img src="https://cdn.worldvectorlogo.com/logos/credly.svg" alt="Credly Logo" style="width:40px;height:40px;">
-        <a class="btn" href="https://www.credly.com/users/athiramol-padinjarekudiyil-sukumaran/edit" target="_blank" rel="noopener">Credly</a>
-      </div>
-
-      <!-- Streamlit -->
-      <div style="text-align:center;">
-        <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit Logo" style="width:40px;height:40px;">
-        <a class="btn" href="https://share.streamlit.io/user/athiramolps" target="_blank" rel="noopener">Streamlit WebApps</a>
-      </div>
-
-      <!-- X (Twitter) -->
-      <div style="text-align:center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="X Logo" style="width:40px;height:40px;">
-        <a class="btn" href="https://x.com/Athiramolps1995" target="_blank" rel="noopener">X</a>
-      </div>
-
     </div>
   </div>
 </section>
-
-
-
 
 <!-- Lightbox Modal -->
 <div id="lightbox" class="lightbox">
@@ -757,7 +730,7 @@ footer {
 </div>
 
 <footer>
-<small>© Athiramol PS — Built with GitHub Pages</small>
+  <small>© Athiramol PS — Built with GitHub Pages</small>
 </footer>
 </div>
 
@@ -768,10 +741,20 @@ function openLightbox(imgElement) {
   var lightboxImg = document.getElementById("lightbox-img");
   lightbox.style.display = "block";
   lightboxImg.src = imgElement.src;
+  document.body.style.overflow = "hidden"; // Prevent scrolling when lightbox is open
 }
 
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
+  document.body.style.overflow = "auto"; // Re-enable scrolling
+}
+
+// Close lightbox when clicking outside the image
+window.onclick = function(event) {
+  var lightbox = document.getElementById("lightbox");
+  if (event.target == lightbox) {
+    closeLightbox();
+  }
 }
 </script>
 </body>
