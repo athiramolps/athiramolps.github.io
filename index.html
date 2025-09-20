@@ -29,7 +29,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* reduced spacing */
+  gap: 10px;
   padding: 20px 0;
   text-align: center;
 }
@@ -63,12 +63,17 @@ header h3 {
   color: var(--muted); 
 }
 
-/* Card style (intro) */
+/* Card (default, used by projects/skills etc.) */
 .card {
-  margin: 20px auto;         /* centers horizontally */
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(12,18,36,.04);
+  background: #fff; /* keep solid white for all other sections */
+}
+
+/* Intro box (special styling, does not affect other cards) */
+.intro-box {
+  margin: 20px auto;         
   background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
   max-width: 800px;          /* narrower like a card */
 }
@@ -83,7 +88,7 @@ header h3 {
   header { padding:20px }
   .avatar { width:120px; height:120px }
   h1 { font-size:28px }
-  .card { max-width: 95%; }
+  .intro-box { max-width: 95%; }
 }
 </style>
 </head>
@@ -97,7 +102,7 @@ header h3 {
     <h3>🏡 Durham, UK</h3>
   </header>
 
-  <!-- Intro paragraph inside centered transparent card -->
+  <!-- Intro paragraph inside centered transparent box -->
   <div class="intro-box card">
     <p>
       With hands-on experience from an intensive <strong>Data Technician Bootcamp at Just IT, UK</strong>, and practical roles as a 
@@ -120,6 +125,7 @@ header h3 {
 </div>
 </body>
 </html>
+
 
 
 
