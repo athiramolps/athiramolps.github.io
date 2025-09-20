@@ -29,7 +29,7 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px; /* reduced spacing (was 20px) */
   align-items: center;
   padding: 28px 0;
   text-align: center;
@@ -46,13 +46,20 @@ header {
 
 /* Name in blue and bold */
 header h1 {
-  color: var(--accent); /* blue color from Portfolio underline */
+  color: var(--accent); 
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 4px 0; /* small space below */
 }
 
-h3 { 
-  margin: 4px 0; 
+/* Job title */
+header h2 {
+  margin: 0 0 2px 0; /* tighter spacing */
+  font-weight: normal;
+}
+
+/* Location */
+header h3 { 
+  margin: 0; /* no extra space */
   color: var(--muted); 
 }
 
@@ -66,14 +73,14 @@ h3 {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(12,18,36,.04);
-  background: #fff; /* white card background */
+  background: #fff;
 }
 
 /* Project styles */
 #projects-list {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* spacing between projects */
+  gap: 30px;
 }
 
 .project-title {
@@ -193,7 +200,7 @@ section h2::after {
   width: 60px;
   height: 4px;
   background: var(--accent);
-  margin: 6px auto 0; /* centers the line */
+  margin: 6px auto 0;
   border-radius: 2px;
 }
 
@@ -209,31 +216,15 @@ section h2::after {
 <div class="container">
 
   <header class="site-header">
-  <img class="avatar" src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/images/a.jpg" alt="Avatar">
-  <h1>Athiramol PS</h1>
-  <h2>Data Analyst & Visualisation Specialist</h2>
-  <h3>🏡 Durham, UK</h3>
-</header>
+    <img class="avatar" src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/images/a.jpg" alt="Avatar">
+    <h1>Athiramol PS</h1>
+    <h2>Data Analyst & Visualisation Specialist</h2>
+    <h3>🏡 Durham, UK</h3>
+  </header>
 
-<!-- intro-box contains only the short paragraphs -->
-<div class="intro-box card">
-  <p>
-    With hands-on experience from an intensive <strong>Data Technician Bootcamp at Just IT, UK</strong>, and practical roles as a 
-    <strong>Tableau DataDev Ambassador</strong> and <strong>Data Analyst Intern</strong>, I have developed expertise in building 
-    interactive dashboards, automating reporting processes, and conducting market analysis to drive measurable results.
-  </p>
-
-  <p>
-    My background in <strong>digital marketing and management</strong> further strengthens my ability to combine data-driven strategy 
-    with creative problem-solving. I am passionate about <strong>data storytelling, dashboard design, and continuous learning</strong>, 
-    and I’ve earned multiple professional certifications, including <strong>IBM BI Analyst, Google Data Analytics, and Tableau Designer</strong>.
-  </p>
-
-  <p>
-    I am currently seeking opportunities to grow as a <strong>Data Analyst/Apprentice</strong>, contribute to impactful projects, 
-    and adapt my skills within the <strong>UK workplace culture</strong>.
-  </p>
 </div>
+</body>
+</html>
 
 
 
