@@ -1120,21 +1120,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   let isDragging = false, startX = 0, startTranslate = 0;
 
-  const visibleCount = () => Math.max(1, Math.floor(container.clientWidth / slideWidth));
+  const maxTranslate = () => {
+    const trackWidth = track.scrollWidth;
+    const containerWidth = container.offsetWidth;
+    return Math.max(0, trackWidth - containerWidth);
+  };
 
   const updateTrack = () => {
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    let translateX = currentIndex * slideWidth;
+    // clamp to maxTranslate so last slide is reachable
+    translateX = Math.min(translateX, maxTranslate());
+    track.style.transform = `translateX(-${translateX}px)`;
   };
 
   const updateButtons = () => {
-    const maxIndex = Math.max(0, figures.length - visibleCount());
+    const maxIndex = Math.ceil(maxTranslate() / slideWidth);
     prevBtn.disabled = currentIndex <= 0;
     nextBtn.disabled = currentIndex >= maxIndex;
   };
 
   const updateSizes = () => {
     slideWidth = figures[0].offsetWidth + parseFloat(getComputedStyle(figures[0]).marginRight);
-    const maxIndex = Math.max(0, figures.length - visibleCount());
+    const maxIndex = Math.ceil(maxTranslate() / slideWidth);
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     updateTrack();
     updateButtons();
@@ -1147,7 +1154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   nextBtn.addEventListener('click', () => {
-    const maxIndex = Math.max(0, figures.length - visibleCount());
+    const maxIndex = Math.ceil(maxTranslate() / slideWidth);
     currentIndex = Math.min(maxIndex, currentIndex + 1);
     updateTrack();
     updateButtons();
@@ -1174,7 +1181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     track.style.transition = '';
     const transformX = parseFloat(track.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
     const rawIndex = Math.round(Math.abs(transformX) / slideWidth);
-    const maxIndex = Math.max(0, figures.length - visibleCount());
+    const maxIndex = Math.ceil(maxTranslate() / slideWidth);
     currentIndex = Math.min(maxIndex, Math.max(0, rawIndex));
     updateTrack();
     updateButtons();
@@ -1184,22 +1191,13 @@ document.addEventListener('DOMContentLoaded', () => {
   track.addEventListener('pointercancel', finishDrag);
   track.addEventListener('pointerleave', finishDrag);
 
-  // Prevent drag from blocking clicks
-  figures.forEach(fig => {
-    const link = fig.querySelector('a');
-    link.addEventListener('click', e => {
-      if (isDragging) e.preventDefault();
-    });
-  });
-
-  // Resize
   window.addEventListener('resize', () => setTimeout(updateSizes, 100));
 
-  // Init
   updateSizes();
   updateButtons();
 });
 </script>
+
 
 
 
