@@ -807,11 +807,14 @@ section h2::after {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-.padded-layout h2 {
-  font-size: 24px;
+
+/* Slider section title */
+#dashboard-slider h2 {
+  color: black;           /* changed from blue to black */
+  text-align: left;       /* align to left */
   margin-bottom: 20px;
-  color: black;
-  text-align: left;
+  font-size: 22px;
+  padding-left: 10px;     /* optional: small padding from left edge */
 }
 
 /* Carousel styling */
@@ -880,6 +883,7 @@ document.querySelector('.prev').addEventListener('click', () => {
   track.style.transform = `translateX(${position}px)`;
 });
 </script>
+
 
 
 
