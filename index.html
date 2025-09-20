@@ -51,9 +51,15 @@ header h1 {
   margin: 0;
 }
 
-h3 { 
-  margin: 4px 0; 
-  color: var(--muted); 
+h3 {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--text);
+  margin-top: -10px;
 }
 
 .lead {
@@ -67,6 +73,17 @@ h3 {
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(12,18,36,.04);
   background: #fff; /* white card background */
+}
+
+/* New box class for the description */
+.box {
+  background-color: rgba(255, 255, 255, 0.9); /* white with some transparency */
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: left;
+  line-height: 1.6;
 }
 
 /* Project styles */
@@ -208,27 +225,33 @@ section h2::after {
 <body>
 <div class="container">
 
-<header style="text-align:left;">
+<header>
   <img class="avatar" src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/images/a.jpg" alt="Avatar">
   <h1>Athiramol PS</h1>
   <h2>Data Analyst & Visualisation Specialist</h2>
   <h3>🏡 Durham, UK</h3>
+</header>
 
+<div class="box">
   <p>
-    With hands-on experience from an intensive <strong>Data Technician Bootcamp at Just IT, UK</strong>, and practical roles as a 
-    <strong>Tableau DataDev Ambassador</strong> and <strong>Data Analyst Intern</strong>, I have developed expertise in building 
+    With hands-on experience from an intensive <strong>Data Technician Bootcamp at Just IT, UK</strong>, and practical roles as a
+    <strong>Tableau DataDev Ambassador</strong> and <strong>Data Analyst Intern</strong>, I have developed expertise in building
     interactive dashboards, automating reporting processes, and conducting market analysis to drive measurable results.
   </p>
   <p>
-    My background in <strong>digital marketing and management</strong> further strengthens my ability to combine data-driven strategy 
-    with creative problem-solving. I am passionate about <strong>data storytelling, dashboard design, and continuous learning</strong>, 
+    My background in <strong>digital marketing and management</strong> further strengthens my ability to combine data-driven strategy
+    with creative problem-solving. I am passionate about <strong>data storytelling, dashboard design, and continuous learning</strong>,
     and I’ve earned multiple professional certifications, including <strong>IBM BI Analyst, Google Data Analytics, and Tableau Designer</strong>.
   </p>
- <p style="text-align: left;">
-  I am currently seeking opportunities to grow as a <strong>Data Analyst/Apprentice</strong>, contribute to impactful projects, 
-  and adapt my skills within the <strong>UK workplace culture</strong>.
-</p>
-</header>
+  <p>
+    I am currently seeking opportunities to grow as a <strong>Data Analyst/Apprentice</strong>, contribute to impactful projects,
+    and adapt my skills within the <strong>UK workplace culture</strong>.
+  </p>
+</div>
+
+</div>
+</body>
+</html>
 
 <main>
 <section id="projects" class="section">
@@ -828,7 +851,7 @@ section h2::after {
         <div class="contact" style="display:flex;flex-direction:row;justify-content:center;align-items:center;gap:16px;">
             
             <a href="https://www.behance.net/96569db7" target="_blank" rel="noopener" style="text-align:center; text-decoration: none; color: inherit;">
-                <img src="https://logos-world.net/wp-content/uploads/2022/04/Behance-Logo.jpg" alt="Behance Logo" style="width:40px;height:40px;">
+                <img src="https://logos-world.net/behance-logo/" alt="Behance Logo" style="width:40px;height:40px;">
                 <p>Behance</p>
             </a>
 
