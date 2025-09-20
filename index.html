@@ -6,16 +6,15 @@
 <title>Athiramol PS</title>
 <style>
 :root {
-  --accent: #0b78d1; /* blue color used for profile, name, and underline */
+  --accent: #0b78d1;
   --muted: #6c757d;
   --text: #111;
 }
 
-/* Body and container */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #e6f2ff; /* light blue background */
+  background-color: #e6f2ff;
   color: var(--text);
 }
 
@@ -29,31 +28,49 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
-  padding: 28px 0;
+  gap: 10px; /* reduced spacing */
+  padding: 20px 0;
   text-align: center;
 }
 
-/* Profile picture with blue circular border */
+/* Profile picture */
 .avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--accent); /* blue border */
+  border: 4px solid var(--accent);
 }
 
-/* Name in blue and bold */
+/* Name */
 header h1 {
-  color: var(--accent); /* blue color from Portfolio underline */
+  color: var(--accent);
   font-weight: bold;
-  margin: 0;
+  margin: 8px 0 0 0;
 }
 
-h3 { 
-  margin: 4px 0; 
+/* Job title */
+header h2 {
+  margin: 4px 0;
+  font-weight: normal;
+  color: var(--text);
+}
+
+/* Location */
+header h3 { 
+  margin: 2px 0; 
   color: var(--muted); 
+}
+
+/* Card style (intro) */
+.card {
+  margin: 20px auto;         /* centers horizontally */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(12,18,36,.04);
+  background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+  max-width: 800px;          /* narrower like a card */
 }
 
 .lead {
@@ -61,147 +78,12 @@ h3 {
   color: var(--text);
 }
 
-/* Card style */
-.card {
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(12,18,36,.04);
-  background: #fff; /* white card background */
-}
-
-/* Project styles */
-#projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px; /* spacing between projects */
-}
-
-.project-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-p.meta {
-  font-size: 13px;
-  color: var(--muted);
-  margin: 6px 0;
-}
-
-/* Thumbnails */
-.thumbs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.thumbs img {
-  width: 100%;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.thumbs img:hover {
-  transform: scale(1.05);
-}
-
-/* Buttons */
-.btn {
-  text-decoration: none;
-  font-weight: 600;
-  color: #fff;
-  background-color: var(--accent);
-  padding: 10px 14px;
-  border-radius: 10px;
-  display: inline-block;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.links {
-  margin-top: 15px;
-  text-align: center;
-}
-
-/* Footer and contact */
-footer {
-  margin: 40px 0;
-  padding: 20px;
-  text-align: center;
-  color: var(--muted);
-}
-
-.contact {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Lightbox Styles */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.lightbox-content {
-  display: block;
-  margin: auto;
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.close:hover { color: #f00; }
-
-/* Section heading blue line */
-section h2 {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 6px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-section h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--accent);
-  margin: 6px auto 0; /* centers the line */
-  border-radius: 2px;
-}
-
 /* Responsive */
 @media (max-width:640px){
   header { padding:20px }
   .avatar { width:120px; height:120px }
   h1 { font-size:28px }
+  .card { max-width: 95%; }
 }
 </style>
 </head>
@@ -209,31 +91,36 @@ section h2::after {
 <div class="container">
 
   <header class="site-header">
-  <img class="avatar" src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/images/a.jpg" alt="Avatar">
-  <h1>Athiramol PS</h1>
-  <h2>Data Analyst & Visualisation Specialist</h2>
-  <h3>🏡 Durham, UK</h3>
-</header>
+    <img class="avatar" src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/images/a.jpg" alt="Avatar">
+    <h1>Athiramol PS</h1>
+    <h2>Data Analyst & Visualisation Specialist</h2>
+    <h3>🏡 Durham, UK</h3>
+  </header>
 
-<!-- intro-box contains only the short paragraphs -->
-<div class="intro-box card">
-  <p>
-    With hands-on experience from an intensive <strong>Data Technician Bootcamp at Just IT, UK</strong>, and practical roles as a 
-    <strong>Tableau DataDev Ambassador</strong> and <strong>Data Analyst Intern</strong>, I have developed expertise in building 
-    interactive dashboards, automating reporting processes, and conducting market analysis to drive measurable results.
-  </p>
+  <!-- Intro paragraph inside centered transparent card -->
+  <div class="intro-box card">
+    <p>
+      With hands-on experience from an intensive <strong>Data Technician Bootcamp at Just IT, UK</strong>, and practical roles as a 
+      <strong>Tableau DataDev Ambassador</strong> and <strong>Data Analyst Intern</strong>, I have developed expertise in building 
+      interactive dashboards, automating reporting processes, and conducting market analysis to drive measurable results.
+    </p>
 
-  <p>
-    My background in <strong>digital marketing and management</strong> further strengthens my ability to combine data-driven strategy 
-    with creative problem-solving. I am passionate about <strong>data storytelling, dashboard design, and continuous learning</strong>, 
-    and I’ve earned multiple professional certifications, including <strong>IBM BI Analyst, Google Data Analytics, and Tableau Designer</strong>.
-  </p>
+    <p>
+      My background in <strong>digital marketing and management</strong> further strengthens my ability to combine data-driven strategy 
+      with creative problem-solving. I am passionate about <strong>data storytelling, dashboard design, and continuous learning</strong>, 
+      and I’ve earned multiple professional certifications, including <strong>IBM BI Analyst, Google Data Analytics, and Tableau Designer</strong>.
+    </p>
 
-  <p>
-    I am currently seeking opportunities to grow as a <strong>Data Analyst/Apprentice</strong>, contribute to impactful projects, 
-    and adapt my skills within the <strong>UK workplace culture</strong>.
-  </p>
+    <p>
+      I am currently seeking opportunities to grow as a <strong>Data Analyst/Apprentice</strong>, contribute to impactful projects, 
+      and adapt my skills within the <strong>UK workplace culture</strong>.
+    </p>
+  </div>
+
 </div>
+</body>
+</html>
+
 
 
 
