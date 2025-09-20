@@ -6,7 +6,7 @@
 <title>Athiramol PS</title>
 <style>
 :root {
-  --accent: #0b78d1;
+  --accent: #0b78d1; /* blue color used for profile, name, and underline */
   --muted: #6c757d;
   --text: #111;
 }
@@ -35,15 +35,26 @@ header {
   text-align: center;
 }
 
+/* Profile picture with blue circular border */
 .avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  border: 4px solid var(--accent); /* blue border */
 }
 
-h1 { margin: 0; }
-h3 { margin: 4px 0; color: var(--muted); }
+/* Name in blue and bold */
+header h1 {
+  color: var(--accent); /* blue color from Portfolio underline */
+  font-weight: bold;
+  margin: 0;
+}
+
+h3 { 
+  margin: 4px 0; 
+  color: var(--muted); 
+}
 
 .lead {
   font-size: 16px;
