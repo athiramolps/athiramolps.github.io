@@ -796,15 +796,17 @@ section h2::after {
 
 
 
-<!-- ===== Dashboard Showcase (corrected) ===== -->
+<!-- ===== Dashboard Showcase ===== -->
 <section id="dashboard-slider" class="section">
   <div class="card project-card">
     <h2>Dashboard Showcase</h2>
 
     <div class="carousel-wrapper" style="margin-top:18px;">
       <button class="prev" aria-label="Previous slide">&#10094;</button>
+
       <div class="carousel-container">
         <div class="carousel-track">
+          <!-- All dashboard figures -->
           <figure>
             <a href="https://public.tableau.com/app/profile/athiramol.ps/viz/AlexandCo-SalesDashboard2023/SalesDashboard" target="_blank" rel="noopener">
               <img src="images/alex_sales_dashboard.png" alt="Alex and Co | Sales Dashboard 2023">
@@ -988,9 +990,12 @@ section h2::after {
           </figure>
         </div>
       </div>
+
       <button class="next" aria-label="Next slide">&#10095;</button>
     </div>
+  </div>
 </section>
+
 
  
 
@@ -1101,49 +1106,39 @@ section h2::after {
   }
 </style>
 
-<!-- Carousel JS (safe to paste inside body after the HTML) -->
+<!-- Fixed Carousel JS -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('#dashboard-slider .carousel-track');
   const container = document.querySelector('#dashboard-slider .carousel-container');
   const prevBtn = document.querySelector('#dashboard-slider .prev');
   const nextBtn = document.querySelector('#dashboard-slider .next');
-  if (!track || !container) return;
-
   const figures = Array.from(track.querySelectorAll('figure'));
-  if (figures.length === 0) {
-    // hide arrows if no slides
-    if (prevBtn) prevBtn.style.display = 'none';
-    if (nextBtn) nextBtn.style.display = 'none';
-    return;
-  }
+  if (!track || !container || figures.length === 0) return;
 
-  let slideWidth = figures[0].getBoundingClientRect().width + parseFloat(getComputedStyle(figures[0]).marginRight || 0);
+  let slideWidth = figures[0].offsetWidth + parseFloat(getComputedStyle(figures[0]).marginRight);
   let currentIndex = 0;
+  let isDragging = false, startX = 0, startTranslate = 0;
 
-  function visibleCount() {
-    return Math.max(1, Math.floor(container.clientWidth / slideWidth));
-  }
+  const visibleCount = () => Math.max(1, Math.floor(container.clientWidth / slideWidth));
 
-  function updateSizes() {
-    // recalc slideWidth and clamp currentIndex
-    slideWidth = figures[0].getBoundingClientRect().width + parseFloat(getComputedStyle(figures[0]).marginRight || 0);
+  const updateTrack = () => {
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  };
+
+  const updateButtons = () => {
+    const maxIndex = Math.max(0, figures.length - visibleCount());
+    prevBtn.disabled = currentIndex <= 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  };
+
+  const updateSizes = () => {
+    slideWidth = figures[0].offsetWidth + parseFloat(getComputedStyle(figures[0]).marginRight);
     const maxIndex = Math.max(0, figures.length - visibleCount());
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     updateTrack();
     updateButtons();
-  }
-
-  function updateTrack() {
-    const x = currentIndex * slideWidth;
-    track.style.transform = `translateX(-${x}px)`;
-  }
-
-  function updateButtons() {
-    const maxIndex = Math.max(0, figures.length - visibleCount());
-    prevBtn.disabled = currentIndex <= 0;
-    nextBtn.disabled = currentIndex >= maxIndex;
-  }
+  };
 
   prevBtn.addEventListener('click', () => {
     currentIndex = Math.max(0, currentIndex - 1);
@@ -1158,50 +1153,53 @@ document.addEventListener('DOMContentLoaded', () => {
     updateButtons();
   });
 
-  // drag / swipe support (pointer events)
-  let isDown = false, startX = 0, startTranslate = 0;
-  track.addEventListener('pointerdown', (e) => {
-    isDown = true;
+  // Drag / swipe
+  track.addEventListener('pointerdown', e => {
+    isDragging = true;
     track.style.transition = 'none';
     startX = e.clientX;
-    const transform = getComputedStyle(track).transform;
-    startTranslate = transform !== 'none' ? parseFloat(transform.split(',')[4]) : 0;
+    startTranslate = parseFloat(track.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
     track.setPointerCapture(e.pointerId);
   });
-  track.addEventListener('pointermove', (e) => {
-    if (!isDown) return;
+
+  track.addEventListener('pointermove', e => {
+    if (!isDragging) return;
     const dx = e.clientX - startX;
     track.style.transform = `translateX(${startTranslate + dx}px)`;
   });
-  function finishDrag() {
-    if (!isDown) return;
-    isDown = false;
+
+  const finishDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
     track.style.transition = '';
-    const transform = getComputedStyle(track).transform;
-    const currentTranslate = transform !== 'none' ? parseFloat(transform.split(',')[4]) : 0;
-    const rawIndex = Math.round(Math.abs(currentTranslate) / slideWidth);
+    const transformX = parseFloat(track.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
+    const rawIndex = Math.round(Math.abs(transformX) / slideWidth);
     const maxIndex = Math.max(0, figures.length - visibleCount());
     currentIndex = Math.min(maxIndex, Math.max(0, rawIndex));
     updateTrack();
     updateButtons();
-  }
+  };
+
   track.addEventListener('pointerup', finishDrag);
   track.addEventListener('pointercancel', finishDrag);
   track.addEventListener('pointerleave', finishDrag);
 
-  // resize handling
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(updateSizes, 120);
+  // Prevent drag from blocking clicks
+  figures.forEach(fig => {
+    const link = fig.querySelector('a');
+    link.addEventListener('click', e => {
+      if (isDragging) e.preventDefault();
+    });
   });
 
-  // initial setup
+  // Resize
+  window.addEventListener('resize', () => setTimeout(updateSizes, 100));
+
+  // Init
   updateSizes();
   updateButtons();
 });
 </script>
-
 
 
 
