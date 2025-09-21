@@ -1422,8 +1422,8 @@ document.addEventListener('DOMContentLoaded', () => {
     user-select: none;
   }
 
-  #powerbi-slider .prev { left: 12px; }
-  #powerbi-slider .next { right: 12px; }
+  #powerbi-slider .prev { left: 20px; }
+  #powerbi-slider .next { right: 20px; }
 
   #powerbi-slider .prev[disabled],
   #powerbi-slider .next[disabled] {
@@ -1469,11 +1469,18 @@ document.addEventListener('DOMContentLoaded', () => {
     return figures[0].offsetWidth + marginRight;
   }
 
-  // ✅ fixed calculation so the slider always goes to the end
   function getMaxIndex() {
-    const maxTranslate = Math.max(0, track.scrollWidth - container.offsetWidth);
-    return Math.ceil(maxTranslate / slideWidth);
-  }
+  // get the actual usable width inside the container
+  const containerStyle = window.getComputedStyle(container);
+  const paddingLeft = parseFloat(containerStyle.paddingLeft) || 0;
+  const paddingRight = parseFloat(containerStyle.paddingRight) || 0;
+  const visibleWidth = container.offsetWidth - (paddingLeft + paddingRight);
+
+  // max translate respects real visible width
+  const maxTranslate = Math.max(0, track.scrollWidth - visibleWidth);
+  return Math.ceil(maxTranslate / slideWidth);
+}
+
 
   function updateTrack() {
     const maxTranslate = Math.max(0, track.scrollWidth - container.offsetWidth);
