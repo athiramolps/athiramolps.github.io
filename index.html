@@ -1404,11 +1404,12 @@ document.addEventListener('DOMContentLoaded', () => {
   #powerbi-slider .next[disabled] { opacity: 0.35; cursor: default; }
 </style>
 
-<!-- ===== Power BI Slider JS ===== -->
+<!-- ===== Power BI Slider JS (Fixed) ===== -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('#powerbi-slider .carousel-wrapper');
   if (!wrapper) return;
+
   const track = wrapper.querySelector('.carousel-track');
   const container = wrapper.querySelector('.carousel-container');
   const prevBtn = wrapper.querySelector('.prev');
@@ -1424,38 +1425,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const marginRight = parseFloat(style.marginRight) || 0;
     return figures[0].offsetWidth + marginRight;
   }
+
+  // ✅ fixed calculation so the slider always goes to the end
   function getMaxIndex() {
-    const visible = Math.floor(container.offsetWidth / slideWidth) || 1;
-    return Math.max(0, figures.length - visible);
+    const maxTranslate = Math.max(0, track.scrollWidth - container.offsetWidth);
+    return Math.ceil(maxTranslate / slideWidth);
   }
+
   function updateTrack() {
     const maxTranslate = Math.max(0, track.scrollWidth - container.offsetWidth);
     let translateX = currentIndex * slideWidth;
     translateX = Math.min(translateX, maxTranslate);
     track.style.transform = `translateX(-${translateX}px)`;
   }
+
   function updateButtons() {
     const maxIndex = getMaxIndex();
     prevBtn.disabled = currentIndex <= 0;
     nextBtn.disabled = currentIndex >= maxIndex;
   }
+
   prevBtn.addEventListener('click', () => {
     currentIndex = Math.max(0, currentIndex - 1);
-    updateTrack(); updateButtons();
+    updateTrack();
+    updateButtons();
   });
+
   nextBtn.addEventListener('click', () => {
     currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
-    updateTrack(); updateButtons();
+    updateTrack();
+    updateButtons();
   });
+
   window.addEventListener('resize', () => {
     slideWidth = getSlideWidth();
     updateTrack();
     updateButtons();
   });
+
+  // init
   updateTrack();
   updateButtons();
 });
 </script>
+
 
 
 
