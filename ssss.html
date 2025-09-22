@@ -58,16 +58,18 @@
     .active-section {
       display: block;
     }
+    #home.active-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     /* Home/About */
     #home {
       background: linear-gradient(rgba(11, 120, 209, 0.8), rgba(11, 120, 209, 0.6)), 
                   url("https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/417544661_882ccb28-d54d-46a3-b65b-ab67ea6ab63b.jpg") no-repeat center center/cover;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       color: white;
     }
     #home .avatar {
@@ -490,10 +492,10 @@
         sec.classList.remove('active-section');
       });
 
-      // Show selected section
+      // Show only the clicked one
       document.getElementById(tabId).classList.add('active-section');
 
-      // Update active nav link
+      // Update navbar
       document.querySelectorAll('nav a').forEach(link => {
         link.classList.remove('active');
       });
