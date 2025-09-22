@@ -57,31 +57,38 @@
     }
     .section.active { display: block; }
 
-    /* About */
+    /* About full screen */
     #about {
-      background: linear-gradient(rgba(11, 120, 209, 0.85), rgba(11, 120, 209, 0.65)), 
-                  url("https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/417544661_882ccb28-d54d-46a3-b65b-ab67ea6ab63b.jpg") no-repeat center center/cover;
+      min-height: 100vh; /* Full screen height */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
       text-align: center;
+      color: white;
+      background: linear-gradient(rgba(11, 120, 209, 0.85), rgba(11, 120, 209, 0.65)), 
+                  url("https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/417544661_882ccb28-d54d-46a3-b65b-ab67ea6ab63b.jpg") no-repeat center center/cover;
     }
     #about .avatar {
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       border: 4px solid white;
       margin-bottom: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    #about h1 { font-size: 2.5rem; margin: 20px 0 8px; }
-    #about h3 { margin: 4px 0; font-weight: 400; }
+    #about h1 {
+      font-size: 2.8rem;
+      margin: 20px 0 10px;
+    }
+    #about h3 {
+      margin: 6px 0;
+      font-weight: 400;
+    }
     #about .tagline {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 20px auto;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 25px auto;
       line-height: 1.6;
     }
 
@@ -176,7 +183,7 @@
     <h3>Data Analyst & Visualisation Specialist</h3>
     <h3>🏡 Durham, UK</h3>
     <div class="tagline">
-      Passionate about transforming complex data into actionable insights through powerful visualizations and analytics.
+      Passionate about transforming complex data into actionable insights through powerful visualizations and analytics.  
       Skilled in Power BI, Tableau, SQL, and Python. Helping organizations make data-driven decisions with clarity.
     </div>
   </section>
