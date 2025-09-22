@@ -59,15 +59,18 @@
 
     /* About full screen */
     #about {
-      min-height: 100vh; /* Full screen height */
+      height: 100vh; /* Full screen */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
+      padding-top: 60px; /* offset for navbar */
+      box-sizing: border-box;
       background: linear-gradient(rgba(11, 120, 209, 0.85), rgba(11, 120, 209, 0.65)), 
-                  url("https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/417544661_882ccb28-d54d-46a3-b65b-ab67ea6ab63b.jpg") no-repeat center center/cover;
+                  url("https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/417544661_882ccb28-d54d-46a3-b65b-ab67ea6ab63b.jpg") 
+                  no-repeat center center/cover;
     }
     #about .avatar {
       width: 200px;
