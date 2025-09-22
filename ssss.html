@@ -47,7 +47,7 @@
       background-color: var(--accent);
     }
 
-    /* Sections */
+    /* Sections hidden by default */
     .section {
       display: none;
       min-height: 100vh;
@@ -55,22 +55,18 @@
       padding: 100px 20px 60px;
       box-sizing: border-box;
     }
-    .active-section {
-      display: block;
-    }
-    #home.active-section {
+    .section.active { display: block; }
+
+    /* About/Home section (flex layout when active) */
+    #home.active {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-
-    /* Home/About */
-    #home {
       background: linear-gradient(rgba(11, 120, 209, 0.8), rgba(11, 120, 209, 0.6)), 
                   url("https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/417544661_882ccb28-d54d-46a3-b65b-ab67ea6ab63b.jpg") no-repeat center center/cover;
-      text-align: center;
       color: white;
+      text-align: center;
     }
     #home .avatar {
       width: 200px;
@@ -80,15 +76,8 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    #home h1 { 
-      margin: 20px 0 8px; 
-      font-size: 2.5rem;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-    #home h3 { 
-      margin: 4px 0; 
-      font-weight: 400;
-    }
+    #home h1 { font-size: 2.5rem; margin: 20px 0 8px; }
+    #home h3 { margin: 4px 0; font-weight: 400; }
     #home .tagline {
       font-size: 1.2rem;
       max-width: 600px;
@@ -110,18 +99,13 @@
       max-width: 1000px;
       box-shadow: 0 6px 18px rgba(12,18,36,.08);
       background: #fff;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
     }
 
-    /* Projects Grid */
+    /* Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 25px;
-      margin-top: 30px;
     }
     .project-card {
       background: white;
@@ -130,33 +114,21 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
+    .project-card:hover { transform: translateY(-5px); }
     .project-img {
-      width: 100%;
-      height: 180px;
+      width: 100%; height: 180px;
       background-color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3rem;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 3rem;
     }
-    .project-content {
-      padding: 20px;
-    }
-    .project-content h3 {
-      margin-top: 0;
-      color: var(--accent);
-    }
+    .project-content { padding: 20px; }
+    .project-content h3 { margin-top: 0; color: var(--accent); }
 
-    /* Dashboard Showcase */
+    /* Dashboards */
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 25px;
-      margin-top: 30px;
     }
     .dashboard-card {
       background: white;
@@ -171,140 +143,18 @@
       text-align: center;
       font-weight: 600;
     }
-    .dashboard-content {
-      padding: 20px;
-    }
-    .dashboard-content p {
-      margin-bottom: 15px;
-    }
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 15px;
-    }
-    .tech-tag {
-      background: #e3f2fd;
-      color: var(--accent);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-    }
+    .dashboard-content { padding: 20px; }
 
-    /* Contact Section */
+    /* Contact */
     .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 30px;
+      display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;
     }
-    .contact-info {
-      flex: 1;
-      min-width: 300px;
-    }
-    .contact-form {
-      flex: 1;
-      min-width: 300px;
-    }
-    .contact-method {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      font-size: 1.2rem;
-    }
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .social-link {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-    .social-link:hover {
-      transform: scale(1.1);
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-family: inherit;
-      box-sizing: border-box;
-    }
-    .form-group textarea {
-      height: 120px;
-      resize: vertical;
-    }
-    .submit-btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-    .submit-btn:hover {
-      background: #0964a8;
-    }
+    .contact-info, .contact-form { flex: 1; min-width: 300px; }
 
     footer {
-      padding: 20px;
-      text-align: center;
-      color: var(--muted);
-      background: white;
+      padding: 20px; text-align: center;
+      color: var(--muted); background: white;
       margin-top: 40px;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      nav {
-        padding: 10px;
-      }
-      nav a {
-        margin: 0 8px;
-        padding: 6px 12px;
-        font-size: 0.9rem;
-      }
-      .section {
-        padding: 80px 15px 40px;
-      }
-      #home h1 {
-        font-size: 2rem;
-      }
-      .projects-grid, .dashboard-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -318,164 +168,63 @@
     <a onclick="showTab('contact', this)">Connect with Me</a>
   </nav>
 
-  <!-- Home/About Section -->
-  <section id="home" class="section active-section">
+  <!-- About -->
+  <section id="home" class="section active">
     <img class="avatar" src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/images/a.jpg" alt="Athiramol PS">
     <h1>Athiramol PS</h1>
     <h3>Data Analyst & Visualisation Specialist</h3>
     <h3>🏡 Durham, UK</h3>
     <div class="tagline">
-      Passionate about transforming complex data into actionable insights through powerful visualizations and analytics. 
-      With expertise in Power BI, Tableau, and data storytelling, I help organizations make data-driven decisions.
+      Passionate about transforming complex data into actionable insights through powerful visualizations and analytics.
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects -->
   <section id="projects" class="section">
     <div class="card">
       <h2>Projects & Skills</h2>
-      <p>Here are some of my recent data analytics and visualization projects:</p>
-      
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-img">📊</div>
           <div class="project-content">
             <h3>Sales Performance Dashboard</h3>
             <p>Interactive Power BI dashboard tracking sales metrics, regional performance, and product analytics.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Power BI</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">DAX</span>
-            </div>
           </div>
         </div>
-        
         <div class="project-card">
           <div class="project-img">🛒</div>
           <div class="project-content">
             <h3>E-commerce Analytics</h3>
             <p>Comprehensive analysis of customer behavior, purchase patterns, and marketing campaign effectiveness.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Tableau</span>
-              <span class="tech-tag">Pandas</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-card">
-          <div class="project-img">❤️</div>
-          <div class="project-content">
-            <h3>Healthcare Data Analysis</h3>
-            <p>Visualization of patient outcomes, treatment efficacy, and hospital performance metrics.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Excel</span>
-              <span class="tech-tag">Power BI</span>
-              <span class="tech-tag">Statistics</span>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Dashboard Showcase Section -->
+  <!-- Dashboard Showcase -->
   <section id="dashboard" class="section">
     <div class="card">
       <h2>Dashboard Showcase</h2>
-      <p>Explore my interactive dashboard creations that transform raw data into meaningful insights:</p>
-      
       <div class="dashboard-grid">
         <div class="dashboard-card">
           <div class="dashboard-header">Financial Analytics Dashboard</div>
           <div class="dashboard-content">
-            <p>Real-time tracking of financial KPIs, revenue streams, and expense analysis with predictive forecasting.</p>
-            <p><strong>Features:</strong> Interactive filters, drill-down capabilities, and automated data refresh.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Power BI</span>
-              <span class="tech-tag">SQL Server</span>
-              <span class="tech-tag">Financial Modeling</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="dashboard-card">
-          <div class="dashboard-header">Marketing Performance Dashboard</div>
-          <div class="dashboard-content">
-            <p>Comprehensive view of marketing campaigns, channel performance, and ROI analysis across platforms.</p>
-            <p><strong>Features:</strong> Multi-channel integration, conversion tracking, and cohort analysis.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Tableau</span>
-              <span class="tech-tag">Google Analytics</span>
-              <span class="tech-tag">API Integration</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="dashboard-card">
-          <div class="dashboard-header">Supply Chain Analytics</div>
-          <div class="dashboard-content">
-            <p>End-to-end visibility into supply chain operations, inventory levels, and logistics performance.</p>
-            <p><strong>Features:</strong> Inventory optimization, delivery tracking, and supplier performance metrics.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Power BI</span>
-              <span class="tech-tag">Excel</span>
-              <span class="tech-tag">Supply Chain Logic</span>
-            </div>
+            <p>Real-time tracking of financial KPIs, revenue streams, and expense analysis.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="section">
     <div class="card">
       <h2>Connect With Me</h2>
       <div class="contact-container">
         <div class="contact-info">
-          <p>I'm always open to discussing data analytics projects, visualization challenges, or potential collaborations.</p>
-          
-          <div class="contact-method">
-            <div class="contact-icon">✉️</div>
-            <div>
-              <strong>Email</strong><br>
-              <a href="mailto:athiramolps@gmail.com">athiramolps@gmail.com</a>
-            </div>
-          </div>
-          
-          <div class="contact-method">
-            <div class="contact-icon">📍</div>
-            <div>
-              <strong>Location</strong><br>
-              Durham, United Kingdom
-            </div>
-          </div>
-          
-          <div class="social-links">
-            <a href="https://linkedin.com/in/athiramolps" target="_blank" class="social-link">in</a>
-            <a href="https://github.com/athiramolps" target="_blank" class="social-link">gh</a>
-            <a href="https://www.behance.net/athiramolps" target="_blank" class="social-link">be</a>
-            <a href="https://twitter.com/athiramolps" target="_blank" class="social-link">tw</a>
-          </div>
-        </div>
-        
-        <div class="contact-form">
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea id="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
+          <p>Email: <a href="mailto:athiramolps@gmail.com">athiramolps@gmail.com</a></p>
+          <p>Location: Durham, United Kingdom</p>
         </div>
       </div>
     </div>
@@ -487,27 +236,17 @@
 
   <script>
     function showTab(tabId, el) {
-      // Hide all sections
+      // Hide all
       document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.remove('active-section');
+        sec.classList.remove('active');
       });
+      // Show clicked
+      document.getElementById(tabId).classList.add('active');
 
-      // Show only the clicked one
-      document.getElementById(tabId).classList.add('active-section');
-
-      // Update navbar
-      document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-      });
+      // Update nav
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
       el.classList.add('active');
     }
-    
-    // Contact form handling
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! I will get back to you soon.');
-      this.reset();
-    });
   </script>
 
 </body>
