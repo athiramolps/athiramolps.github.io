@@ -696,7 +696,7 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* Lightbox */
+        /* Lightbox with Carousel */
         .lightbox {
             display: none;
             position: fixed;
@@ -710,19 +710,158 @@
             align-items: center;
         }
 
-        .lightbox-content {
+        .lightbox-content-wrapper {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        #lightbox-video {
+            max-width: 100%;
+            max-height: 80vh;
         }
 
         .close {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: -40px;
+            right: 0;
             color: white;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 1001;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .carousel-arrow.left {
+            left: -80px;
+        }
+
+        .carousel-arrow.right {
+            right: -80px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-arrow.left {
+                left: 10px;
+            }
+            .carousel-arrow.right {
+                right: 10px;
+            }
+            .close {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        /* Content Design Section */
+        #content-design {
+            background: var(--bg);
+        }
+
+        .content-category {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .content-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .content-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .content-thumb {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-thumb {
+            position: relative;
+        }
+
+        .video-thumb::after {
+            content: '\f04b';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        .content-info {
+            padding: 10px;
+        }
+
+        .content-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--primary-dark);
+        }
+
+        .content-caption {
+            font-size: 0.8rem;
+            color: var(--text-light);
         }
 
         /* Connect Section */
@@ -844,12 +983,7 @@
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
 
-            /* Fix skills on tablets and smaller */
             .athiramol-skills {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                right: auto;
                 flex-direction: column;
                 gap: 25px;
                 padding: 0 20px;
@@ -893,7 +1027,6 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Athiramol Section Mobile */
             #athiramol {
                 padding: 100px 0 60px;
             }
@@ -938,6 +1071,10 @@
             .contact-form {
                 padding: 30px 25px;
                 margin: 0 15px;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
         }
 
@@ -1169,38 +1306,24 @@
                     <p>Real‑world campaigns, content creation, and business reports.</p>
                 </div>
                 <div class="top-projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>Digital Marketing Portfolio</h3>
-                            <p>Collection of real‑world digital marketing projects showcasing strategies and campaigns.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Digital Marketing</span>
-                                <span class="project-tag">Portfolio</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://www.behance.net/gallery/229986499/Digital-Marketing-Portfolio-Real-World-Projects" target="_blank" class="btn btn-primary">View Project</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Content Design Tile (first) -->
                     <div class="project-card">
                         <div class="project-image">
                             <i class="fas fa-video"></i>
                         </div>
                         <div class="project-content">
-                            <h3>Content Creation</h3>
+                            <h3>Content Design</h3>
                             <p>Engaging visual and written content for social media, blogs, and marketing.</p>
                             <div class="project-tags">
                                 <span class="project-tag">Content</span>
                                 <span class="project-tag">Creative</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://drive.google.com/drive/folders/1ekseYiEhsfuG6IMqi8JwYtXC8F0muHsI" target="_blank" class="btn btn-primary">View Folder</a>
+                                <a href="javascript:void(0);" onclick="showContentDesign()" class="btn btn-primary">View Showcase</a>
                             </div>
                         </div>
                     </div>
+                    <!-- Business Reports & Analytics Tile (second) -->
                     <div class="project-card">
                         <div class="project-image">
                             <i class="fas fa-file-alt"></i>
@@ -1217,10 +1340,27 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Digital Marketing Portfolio Tile (third) -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Digital Marketing Portfolio</h3>
+                            <p>Collection of real‑world digital marketing projects showcasing strategies and campaigns.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Digital Marketing</span>
+                                <span class="project-tag">Portfolio</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.behance.net/gallery/229986499/Digital-Marketing-Portfolio-Real-World-Projects" target="_blank" class="btn btn-primary">View Project</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Market Research Projects -->
+            <!-- Market Research Projects (keep as before) -->
             <div class="projects-section">
                 <div class="projects-section-title">
                     <h3>Market Research Projects</h3>
@@ -1228,6 +1368,7 @@
                 </div>
                 
                 <div class="top-projects-grid">
+                    <!-- (all market research cards, same as original) -->
                     <div class="project-card">
                         <div class="project-image">
                             <i class="fas fa-car"></i>
@@ -1572,7 +1713,7 @@
                 </div>
             </div>
             
-            <!-- Data Projects -->
+            <!-- Data Projects (keep as before) -->
             <div class="projects-section">
                 <div class="projects-section-title">
                     <h3>Data Projects</h3>
@@ -1799,7 +1940,7 @@
                 </div>
             </div>
 
-            <!-- Machine Learning Projects -->
+            <!-- Machine Learning Projects (keep as before) -->
             <div class="projects-section">
                 <div class="projects-section-title">
                     <h3>Machine Learning Projects</h3>
@@ -1885,7 +2026,7 @@
                 </div>
             </div>
 
-            <!-- Web Development Projects -->
+            <!-- Web Development Projects (keep as before) -->
             <div class="projects-section">
                 <div class="projects-section-title">
                     <h3>Web Development Projects</h3>
@@ -1911,7 +2052,7 @@
                 </div>
             </div>
             
-            <!-- WebApps Projects -->
+            <!-- WebApps Projects (keep as before) -->
             <div class="projects-section">
                 <div class="projects-section-title">
                     <h3>WebApps Projects</h3>
@@ -1975,7 +2116,7 @@
         </div>
     </section>
 
-    <!-- Dashboards Section -->
+    <!-- Dashboards Section (keep as before) -->
     <section id="dashboards">
         <div class="container">
             <div class="section-title">
@@ -1988,6 +2129,7 @@
                 <h2 style="text-align: center; color: var(--primary-dark); font-size: 2rem; margin-bottom: 20px;">Explore my Tableau Dashboards</h2>
                 
                 <div class="dashboard-grid">
+                    <!-- (all Tableau cards, same as original) -->
                     <div class="dashboard-card">
                         <div class="dashboard-image">
                             <img src="https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Sales%20Dashboard.png" alt="Alex and Co | Sales Dashboard 2023">
@@ -2380,7 +2522,7 @@
                 </div>
             </div>
 
-            <!-- Power BI Showcase -->
+            <!-- Power BI Showcase (keep as before) -->
             <div class="card project-card">
                 <h2 style="text-align: center; color: var(--primary-dark); font-size: 2rem; margin-bottom: 20px;">Insightful Analytics with Power BI</h2>
                 
@@ -2597,7 +2739,7 @@
                 </div>
             </div>
 
-            <!-- Other BI Dashboards -->
+            <!-- Other BI Dashboards (keep as before) -->
             <div class="card project-card">
                 <h2 style="text-align: center; color: var(--primary-dark); font-size: 2rem; margin-bottom: 20px;">Other BI Dashboards</h2>
                 
@@ -2681,7 +2823,7 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Blog Section (keep as before) -->
     <section id="blog">
         <div class="container">
             <div class="section-title">
@@ -2707,7 +2849,7 @@
         </div>
     </section>
 
-    <!-- Photography Section -->
+    <!-- Photography Section (keep as before) -->
     <section id="photography">
         <div class="container">
             <div class="section-title">
@@ -2733,7 +2875,7 @@
         </div>
     </section>
 
-    <!-- Youtube Section -->
+    <!-- Youtube Section (keep as before) -->
     <section id="youtube">
         <div class="container">
             <div class="section-title">
@@ -2759,7 +2901,7 @@
         </div>
     </section>
 
-    <!-- Professional Background Section -->
+    <!-- Professional Background Section (keep as before) -->
     <section id="about">
         <div class="container">
             <div class="section-title">
@@ -2784,7 +2926,7 @@
         </div>
     </section>
     
-    <!-- Connect Section -->
+    <!-- Connect Section (keep as before) -->
     <section id="connect">
         <div class="container">
             <div class="section-title">
@@ -2825,7 +2967,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Content Design Section -->
+    <section id="content-design">
+        <div class="container">
+            <div class="section-title">
+                <h2>Content Design Showcase</h2>
+                <p>A curated collection of my creative work – social posts, marketing collaterals, copywriting, and branding.</p>
+            </div>
+
+            <!-- Categories will be populated by JavaScript -->
+            <div id="content-design-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer (keep as before) -->
     <footer>
         <div class="container">
             <div class="social-links">
@@ -2838,10 +2993,15 @@
         </div>
     </footer>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
+    <!-- Lightbox with Carousel -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content-wrapper">
+            <span class="close" onclick="closeLightbox(event)">&times;</span>
+            <div class="carousel-arrow left" onclick="prevItem(event)"><i class="fas fa-chevron-left"></i></div>
+            <div class="carousel-arrow right" onclick="nextItem(event)"><i class="fas fa-chevron-right"></i></div>
+            <img class="lightbox-content" id="lightbox-img" style="display: none;">
+            <video id="lightbox-video" class="lightbox-content" controls style="display: none;"></video>
+        </div>
     </div>
 
     <script>
@@ -2852,59 +3012,215 @@
             const menuToggle = document.getElementById('menuToggle');
             const navLinksContainer = document.getElementById('navLinks');
             
-            // Set initial active section
             sections.forEach(section => {
                 section.classList.remove('active');
             });
             document.getElementById('athiramol').classList.add('active');
             
-            // Handle navigation clicks
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    // Remove active class from all links and sections
                     navLinks.forEach(l => l.classList.remove('active'));
                     sections.forEach(s => s.classList.remove('active'));
                     
-                    // Add active class to clicked link
                     this.classList.add('active');
                     
-                    // Show corresponding section
                     const targetId = this.getAttribute('href').substring(1);
                     document.getElementById(targetId).classList.add('active');
                     
-                    // Scroll to top of the page
                     window.scrollTo(0, 0);
                     
-                    // Close mobile menu if open
                     if (navLinksContainer.classList.contains('active')) {
                         navLinksContainer.classList.remove('active');
                     }
                 });
             });
             
-            // Mobile menu toggle
             menuToggle.addEventListener('click', function() {
                 navLinksContainer.classList.toggle('active');
             });
+
+            buildContentShowcase();
         });
 
-        // Lightbox functionality
-        function openLightbox(element) {
+        // Carousel state
+        let currentCarouselItems = [];
+        let currentIndex = 0;
+
+        // Lightbox functions with carousel
+        function openLightbox(src, type) {
+            currentCarouselItems = [{ src, type }];
+            currentIndex = 0;
+            displayCurrentItem();
             document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightbox-img').src = element.src;
         }
 
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
+        function openCarousel(items, startIndex = 0) {
+            currentCarouselItems = items;
+            currentIndex = startIndex;
+            displayCurrentItem();
+            document.getElementById('lightbox').style.display = 'flex';
         }
 
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target !== document.getElementById('lightbox-img')) {
-                closeLightbox();
+        function displayCurrentItem() {
+            const item = currentCarouselItems[currentIndex];
+            const img = document.getElementById('lightbox-img');
+            const video = document.getElementById('lightbox-video');
+            
+            img.style.display = 'none';
+            video.style.display = 'none';
+            
+            if (item.type === 'image') {
+                img.src = item.src;
+                img.style.display = 'block';
+            } else if (item.type === 'video') {
+                video.src = item.src;
+                video.style.display = 'block';
             }
+        }
+
+        function prevItem(event) {
+            if (event) event.stopPropagation();
+            if (currentCarouselItems.length > 1) {
+                currentIndex = (currentIndex - 1 + currentCarouselItems.length) % currentCarouselItems.length;
+                displayCurrentItem();
+            }
+        }
+
+        function nextItem(event) {
+            if (event) event.stopPropagation();
+            if (currentCarouselItems.length > 1) {
+                currentIndex = (currentIndex + 1) % currentCarouselItems.length;
+                displayCurrentItem();
+            }
+        }
+
+        function closeLightbox(event) {
+            if (event) event.stopPropagation();
+            const lightbox = document.getElementById('lightbox');
+            const video = document.getElementById('lightbox-video');
+            video.pause();
+            lightbox.style.display = 'none';
+        }
+
+        // Show content design section
+        function showContentDesign() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            sections.forEach(s => s.classList.remove('active'));
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            document.getElementById('content-design').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Branding items (6 items)
+        const brandingItems = [
+            { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/DUAL.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/DUAL.png', title: 'DUAL', caption: 'Branding asset' },
+            { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/YouTube%20Channel%20Subscribe%20Page.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/YouTube%20Channel%20Subscribe%20Page.png', title: 'YouTube Channel Subscribe Page', caption: 'Branding asset' },
+            { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/Youtube%20Logo.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/Youtube%20Logo.png', title: 'YouTube Logo', caption: 'Branding asset' },
+            { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/banner.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/banner.png', title: 'Banner', caption: 'Branding asset' },
+            { type: 'video', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/thank%20you-last%20part%202.mp4', thumb: 'https://via.placeholder.com/200x150?text=Thank+You+Video', title: 'Thank You Video', caption: 'Branding video' },
+            { type: 'video', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/welcome.mp4', thumb: 'https://via.placeholder.com/200x150?text=Welcome+Video', title: 'Welcome Video', caption: 'Branding video' }
+        ];
+
+        // Content items – only the requested categories
+        const contentItems = [
+            // Social Media Posts (4 items)
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Candle-%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Candle-%20Post.png', title: 'Candle Post', caption: 'Social media content' },
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', title: 'Blog Post Mockup', caption: 'Social media content' },
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', title: 'FB Square Post Webinar', caption: 'Social media content' },
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/_Testimonials%20Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/_Testimonials%20Instagram%20Post.png', title: 'Testimonials Instagram Post', caption: 'Social media content' },
+            
+            // Marketing Collaterals (2 items)
+            { category: 'Marketing Collaterals', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Email%20Newsletter%20(1).png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Email%20Newsletter%20(1).png', title: 'Email Newsletter', caption: 'Marketing collateral' },
+            { category: 'Marketing Collaterals', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png', title: 'Anna’s Boutique', caption: 'Marketing collateral' },
+            
+            // Vacancy Posts (1 item)
+            { category: 'Vacancy Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Hiring%20LinkedIn%20Post%20(1).png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Hiring%20LinkedIn%20Post%20(1).png', title: 'Hiring LinkedIn Post', caption: 'Job advertisement' },
+            
+            // Copywriting (8 items)
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Email%20Newsletter.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Email%20Newsletter.png', title: 'Email Newsletter', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Hiring%20LinkedIn%20Post%20(1).png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Hiring%20LinkedIn%20Post%20(1).png', title: 'Hiring LinkedIn Post', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Instagram%20-%20Poll.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Instagram%20-%20Poll.png', title: 'Instagram Poll', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/MAEVE-Instagram%20post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/MAEVE-Instagram%20post.png', title: 'MAEVE Instagram Post', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Perfume-post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Perfume-post.png', title: 'Perfume Post', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-%20Facebook%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-%20Facebook%20Post.png', title: 'Redmagic Facebook Post', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-Instagram%20Post.png', title: 'Redmagic Instagram Post', caption: 'Copywriting sample' },
+            { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/_Testimonials%20Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/_Testimonials%20Instagram%20Post.png', title: 'Testimonials Instagram Post', caption: 'Copywriting sample' },
+            
+            // Strategy (1 item)
+            { category: 'Strategy', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', title: 'Social Media Content Calendar', caption: 'Strategic document' }
+        ];
+
+        // Add Branding category with single tile
+        contentItems.push({
+            category: 'Branding',
+            type: 'carousel',
+            items: brandingItems,
+            title: 'YouTube Branding',
+            caption: 'Click to view all branding assets',
+            thumb: brandingItems[0].thumb
+        });
+
+        function buildContentShowcase() {
+            const container = document.getElementById('content-design-grid');
+            if (!container) return;
+            
+            // Group by category
+            const grouped = {};
+            contentItems.forEach(item => {
+                if (!grouped[item.category]) grouped[item.category] = [];
+                grouped[item.category].push(item);
+            });
+
+            let html = '';
+            for (let category in grouped) {
+                html += `<div class="content-category">`;
+                html += `<h3 class="category-title">${category}</h3>`;
+                html += `<div class="content-grid">`;
+                
+                grouped[category].forEach(item => {
+                    if (item.type === 'carousel') {
+                        html += `
+                            <div class="content-item video-thumb" onclick="openCarousel(${JSON.stringify(item.items).replace(/"/g, '&quot;')}, 0)">
+                                <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
+                                <div class="content-info">
+                                    <div class="content-title">${item.title}</div>
+                                    <div class="content-caption">${item.caption}</div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div class="content-item ${item.type === 'video' ? 'video-thumb' : ''}" onclick="openLightbox('${item.src}', '${item.type}')">
+                                <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
+                                <div class="content-info">
+                                    <div class="content-title">${item.title}</div>
+                                    <div class="content-caption">${item.caption}</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+                
+                html += `</div></div>`;
+            }
+            
+            container.innerHTML = html;
+        }
+
+        // Prevent lightbox close when clicking on video or arrows
+        document.getElementById('lightbox-video').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        document.querySelector('.carousel-arrow.left').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        document.querySelector('.carousel-arrow.right').addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     </script>
 </body>
