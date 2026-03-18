@@ -730,6 +730,12 @@
             max-height: 80vh;
         }
 
+        #lightbox-pdf {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+
         .close {
             position: absolute;
             top: -40px;
@@ -770,6 +776,10 @@
 
         .carousel-arrow.right {
             right: -80px;
+        }
+
+        .carousel-arrow.hidden {
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -2972,7 +2982,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Content Design Showcase</h2>
-                <p>A curated collection of my creative work – social media posts, marketing collaterals, copywriting, and branding.</p>
+                <p>A curated collection of my creative work – social media posts, videos, marketing collaterals, copywriting, and more.</p>
             </div>
 
             <!-- Categories will be populated by JavaScript -->
@@ -3001,6 +3011,7 @@
             <div class="carousel-arrow right" onclick="nextItem(event)"><i class="fas fa-chevron-right"></i></div>
             <img class="lightbox-content" id="lightbox-img" style="display: none;">
             <video id="lightbox-video" class="lightbox-content" controls style="display: none;"></video>
+            <iframe id="lightbox-pdf" class="lightbox-content" style="display: none;"></iframe>
         </div>
     </div>
 
@@ -3047,29 +3058,40 @@
         // Carousel state
         let currentCarouselItems = [];
         let currentIndex = 0;
+        let allowArrows = false;
 
         // Lightbox functions with carousel
         function openLightbox(src, type) {
             currentCarouselItems = [{ src, type }];
             currentIndex = 0;
+            allowArrows = false; // single item, no arrows
             displayCurrentItem();
             document.getElementById('lightbox').style.display = 'flex';
         }
 
-        function openCarousel(items, startIndex = 0) {
+        function openCarousel(items, startIndex = 0, enableArrows = true) {
             currentCarouselItems = items;
             currentIndex = startIndex;
+            allowArrows = enableArrows && items.length > 1;
             displayCurrentItem();
             document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function openPDF(src) {
+            openLightbox(src, 'pdf');
         }
 
         function displayCurrentItem() {
             const item = currentCarouselItems[currentIndex];
             const img = document.getElementById('lightbox-img');
             const video = document.getElementById('lightbox-video');
+            const pdf = document.getElementById('lightbox-pdf');
+            const leftArrow = document.querySelector('.carousel-arrow.left');
+            const rightArrow = document.querySelector('.carousel-arrow.right');
             
             img.style.display = 'none';
             video.style.display = 'none';
+            pdf.style.display = 'none';
             
             if (item.type === 'image') {
                 img.src = item.src;
@@ -3077,6 +3099,18 @@
             } else if (item.type === 'video') {
                 video.src = item.src;
                 video.style.display = 'block';
+            } else if (item.type === 'pdf') {
+                pdf.src = item.src;
+                pdf.style.display = 'block';
+            }
+
+            // Show/hide arrows based on allowArrows
+            if (allowArrows && currentCarouselItems.length > 1) {
+                leftArrow.classList.remove('hidden');
+                rightArrow.classList.remove('hidden');
+            } else {
+                leftArrow.classList.add('hidden');
+                rightArrow.classList.add('hidden');
             }
         }
 
@@ -3100,7 +3134,9 @@
             if (event) event.stopPropagation();
             const lightbox = document.getElementById('lightbox');
             const video = document.getElementById('lightbox-video');
-            video.pause();
+            const pdf = document.getElementById('lightbox-pdf');
+            if (video) video.pause();
+            if (pdf) pdf.src = ''; // stop PDF loading
             lightbox.style.display = 'none';
         }
 
@@ -3126,22 +3162,46 @@
             { type: 'video', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/welcome.mp4', thumb: 'https://via.placeholder.com/200x150?text=Welcome+Video', title: 'Welcome Video' }
         ];
 
-        // Content items – only the requested categories, with captions removed (except Branding)
+        // Content items – updated with all changes
         const contentItems = [
-            // Social Media Posts (4 items) - no caption
+            // ===== SOCIAL MEDIA POSTS =====
+            // Existing 4 posts with updated titles
             { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Candle-%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Candle-%20Post.png', title: 'Candle Post' },
-            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', title: 'Blog Post Mockup' },
-            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', title: 'FB Square Post Webinar' },
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', title: 'Blog Post' }, // changed
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', title: 'Facebook Post Webinar' }, // changed
             { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/_Testimonials%20Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/_Testimonials%20Instagram%20Post.png', title: 'Testimonials Instagram Post' },
             
-            // Marketing Collaterals (2 items) - no caption
+            // Carousel Post (3 images)
+            {
+                category: 'Social Media Posts',
+                type: 'carousel',
+                items: [
+                    { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/1.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/1.png', title: 'Carousel 1' },
+                    { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/2.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/2.png', title: 'Carousel 2' },
+                    { type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/3.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/3.png', title: 'Carousel 3' }
+                ],
+                title: 'Carousel Post',
+                thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/1.png'
+            },
+            
+            // Instagram Poll
+            { category: 'Social Media Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Instagram%20-%20Poll.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Instagram%20-%20Poll.png', title: 'Instagram Poll' },
+            
+            // ===== VIDEOS with updated preview images =====
+            { category: 'Videos', type: 'video', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Youtube%20Video-2.mp4', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/6.png', title: 'Candle Making YouTube Video' },
+            { category: 'Videos', type: 'video', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Ads-Video%20Ad.mp4', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Ads-Video%20Ad.png', title: 'Candle Ad Instagram Video' },
+            { category: 'Videos', type: 'video', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Insta%20Reels.mp4', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/2.png', title: 'Candle Reel' },
+            
+            // ===== MARKETING COLLATERALS (3 items - removed Candle Brochure) =====
             { category: 'Marketing Collaterals', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Email%20Newsletter%20(1).png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Email%20Newsletter%20(1).png', title: 'Email Newsletter' },
-            { category: 'Marketing Collaterals', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png', title: 'Anna’s Boutique' },
+            { category: 'Marketing Collaterals', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png', title: 'Email Newsletter' }, // changed from Anna's Boutique
+            { category: 'Marketing Collaterals', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Flyer.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Flyer.png', title: 'Flyer' },
             
-            // Vacancy Posts (1 item) - no caption
+            // ===== VACANCY POSTS (2 items) =====
             { category: 'Vacancy Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Hiring%20LinkedIn%20Post%20(1).png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Hiring%20LinkedIn%20Post%20(1).png', title: 'Hiring LinkedIn Post' },
+            { category: 'Vacancy Posts', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Marketing%20Internship%20Program%20Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Marketing%20Internship%20Program%20Instagram%20Post.png', title: 'Marketing Internship Program' },
             
-            // Copywriting (8 items) - no caption
+            // ===== COPYWRITING (8 items) =====
             { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Email%20Newsletter.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Email%20Newsletter.png', title: 'Email Newsletter' },
             { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Hiring%20LinkedIn%20Post%20(1).png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Hiring%20LinkedIn%20Post%20(1).png', title: 'Hiring LinkedIn Post' },
             { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Instagram%20-%20Poll.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Instagram%20-%20Poll.png', title: 'Instagram Poll' },
@@ -3151,19 +3211,53 @@
             { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-Instagram%20Post.png', title: 'Redmagic Instagram Post' },
             { category: 'Copywriting', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/_Testimonials%20Instagram%20Post.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/_Testimonials%20Instagram%20Post.png', title: 'Testimonials Instagram Post' },
             
-            // Strategy (1 item) - no caption
-            { category: 'Strategy', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', title: 'Social Media Content Calendar' }
+            // ===== STRATEGY (2 items) =====
+            { category: 'Strategy', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', title: 'Social Media Content Calendar' },
+            { category: 'Strategy', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Persona.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Persona.png', title: 'Persona' },
+            
+            // ===== BRANDING =====
+            {
+                category: 'Branding',
+                type: 'carousel',
+                items: brandingItems,
+                title: 'YouTube Branding',
+                caption: 'Click to view all branding assets',
+                thumb: brandingItems[0].thumb
+            },
+            
+            // ===== VISUAL DESIGN =====
+            { category: 'Visual Design', type: 'image', src: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/visualdesign/Recycling%20Process%20Infographic.png', thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/visualdesign/Recycling%20Process%20Infographic.png', title: 'Recycling Process Infographic' },
+            
+            // ===== PERFORMANCE INSIGHTS (renamed) =====
+            {
+                category: 'Performance Insights',
+                type: 'external-link',
+                title: 'Web Traffic Dashboard',
+                thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Dashboard%201%20(2).png',
+                url: 'https://public.tableau.com/app/profile/athiramol.ps/viz/WebTrafficDashboard_17394143094640/Dashboard12'
+            },
+            {
+                category: 'Performance Insights',
+                type: 'external-link',
+                title: 'Digital Marketing KPI Dashboard',
+                thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Digital%20Marketing%20KPI%20Dashboard.png',
+                url: 'https://public.tableau.com/app/profile/athiramol.ps/viz/Marketing_KPIDashboard/DigitalMarketingKPIDashboard'
+            },
+            {
+                category: 'Performance Insights',
+                type: 'external-link',
+                title: 'Executive Dashboard - Email Campaign Performance',
+                thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tab/Dashboard%201-2.png',
+                url: 'https://public.tableau.com/app/profile/athiramol.ps/viz/ExecutiveDashboardMarketingEmailCampaignPerformance/Dashboard1'
+            },
+            {
+                category: 'Performance Insights',
+                type: 'external-link',
+                title: 'Ecommerce Dashboard Sales and Marketing',
+                thumb: 'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Dashboard%201.png',
+                url: 'https://public.tableau.com/app/profile/athiramol.ps/viz/E-CommerceDashboard_17400989469420/Dashboard1'
+            }
         ];
-
-        // Add Branding category with single tile - keep its caption
-        contentItems.push({
-            category: 'Branding',
-            type: 'carousel',
-            items: brandingItems,
-            title: 'YouTube Branding',
-            caption: 'Click to view all branding assets',
-            thumb: brandingItems[0].thumb
-        });
 
         function buildContentShowcase() {
             const container = document.getElementById('content-design-grid');
@@ -3176,39 +3270,64 @@
                 grouped[item.category].push(item);
             });
 
+            // Desired category order (Performance Insights updated)
+            const categoryOrder = [
+                'Social Media Posts',
+                'Videos',
+                'Marketing Collaterals',
+                'Vacancy Posts',
+                'Copywriting',
+                'Strategy',
+                'Branding',
+                'Visual Design',
+                'Performance Insights'
+            ];
+
             let html = '';
-            for (let category in grouped) {
-                html += `<div class="content-category">`;
-                html += `<h3 class="category-title">${category}</h3>`;
-                html += `<div class="content-grid">`;
-                
-                grouped[category].forEach(item => {
-                    if (item.type === 'carousel') {
-                        // Branding tile keeps caption
-                        html += `
-                            <div class="content-item video-thumb" onclick="openCarousel(${JSON.stringify(item.items).replace(/"/g, '&quot;')}, 0)">
-                                <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
-                                <div class="content-info">
-                                    <div class="content-title">${item.title}</div>
-                                    <div class="content-caption">${item.caption}</div>
+            categoryOrder.forEach(category => {
+                if (grouped[category]) {
+                    html += `<div class="content-category">`;
+                    html += `<h3 class="category-title">${category}</h3>`;
+                    html += `<div class="content-grid">`;
+                    
+                    grouped[category].forEach(item => {
+                        if (item.type === 'carousel') {
+                            // Enable arrows only for Branding and Carousel Post
+                            const enableArrows = (category === 'Branding' && item.title === 'YouTube Branding') || 
+                                                (category === 'Social Media Posts' && item.title === 'Carousel Post');
+                            html += `
+                                <div class="content-item" onclick="openCarousel(${JSON.stringify(item.items).replace(/"/g, '&quot;')}, 0, ${enableArrows})">
+                                    <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
+                                    <div class="content-info">
+                                        <div class="content-title">${item.title}</div>
+                                        ${item.caption ? `<div class="content-caption">${item.caption}</div>` : ''}
+                                    </div>
                                 </div>
-                            </div>
-                        `;
-                    } else {
-                        // All other tiles: no caption, only title
-                        html += `
-                            <div class="content-item ${item.type === 'video' ? 'video-thumb' : ''}" onclick="openLightbox('${item.src}', '${item.type}')">
-                                <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
-                                <div class="content-info">
-                                    <div class="content-title">${item.title}</div>
+                            `;
+                        } else if (item.type === 'external-link') {
+                            html += `
+                                <a href="${item.url}" target="_blank" class="content-item" style="text-decoration: none;">
+                                    <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
+                                    <div class="content-info">
+                                        <div class="content-title">${item.title}</div>
+                                    </div>
+                                </a>
+                            `;
+                        } else {
+                            html += `
+                                <div class="content-item ${item.type === 'video' ? 'video-thumb' : ''}" onclick="openLightbox('${item.src}', '${item.type}')">
+                                    <img src="${item.thumb}" alt="${item.title}" class="content-thumb">
+                                    <div class="content-info">
+                                        <div class="content-title">${item.title}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
-                    }
-                });
-                
-                html += `</div></div>`;
-            }
+                            `;
+                        }
+                    });
+                    
+                    html += `</div></div>`;
+                }
+            });
             
             container.innerHTML = html;
         }
