@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athiramol PS — Digital Marketer & Content Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --ivory: #FAF9F6;
+            --ink: #0D0D0D;
+            --ink-soft: #3D3D3D;
+            --ink-muted: #7A7A7A;
+            /* new green palette */
+            --green: #03a859;
+            --green-hover: #028a48;
+            --green-light: #E6F5ED;
+            --white: #FFFFFF;
+            --border: #E8E3DC;
+            --card-bg: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--ivory);
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(250,249,246,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 32px;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem; font-weight: 600;
+            color: var(--ink); text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .nav-logo span { color: var(--green); }
+        .nav-links { display: flex; list-style: none; gap: 4px; }
+        .nav-links a {
+            font-size: 0.8rem; font-weight: 400;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            text-decoration: none; color: var(--ink-muted);
+            padding: 7px 16px; border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--green); background: var(--green-light);
+        }
+        .menu-toggle {
+            display: none; cursor: pointer; font-size: 1.2rem;
+            color: var(--ink); background: none; border: none; padding: 4px;
+        }
+
+        /* ── SECTIONS ── */
+        section { display: none; }
+        section.active { display: block; animation: fadeUp 0.45s ease; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+        /* ── ABOUT (single column) ── */
+        #about { padding: 88px 0 72px; min-height: calc(100vh - 64px); }
+        .about-single {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .about-eyebrow {
+            display: inline-block; font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--green);
+            background: var(--green-light); padding: 5px 14px; border-radius: 30px;
+            margin-bottom: 22px;
+        }
+        .about-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 5.5vw, 5rem); font-weight: 600;
+            color: var(--ink); line-height: 1.0; margin-bottom: 10px;
+            letter-spacing: -0.03em;
+        }
+        .about-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem; color: var(--green); font-style: italic;
+            font-weight: 500; margin-bottom: 30px;
+            display: none; /* removed as requested */
+        }
+        .about-bio p {
+            font-size: 0.965rem; color: var(--ink-soft);
+            margin-bottom: 14px; line-height: 1.85;
+        }
+        .about-bio strong { color: var(--ink); font-weight: 500; }
+
+        .cta-row {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px;
+        }
+        .btn-green {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: var(--green); color: white;
+            padding: 11px 22px; border-radius: 7px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.85rem; font-weight: 500; text-decoration: none;
+            transition: all 0.2s; letter-spacing: 0.01em;
+        }
+        .btn-green:hover { background: var(--green-hover); transform: translateY(-1px); }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 7px;
+            border: 1px solid var(--border); color: var(--ink-soft);
+            padding: 11px 22px; border-radius: 7px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.85rem; font-weight: 500; text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+        .skills-section { margin-top: 52px; }
+        .skills-label {
+            font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--ink-muted); margin-bottom: 16px;
+        }
+        .skills-group { margin-bottom: 18px; }
+        .skills-group-name {
+            font-size: 0.78rem; font-weight: 500; color: var(--ink);
+            margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+        }
+        .skills-group-name i { color: var(--green); font-size: 0.78rem; }
+        .skills-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-pill {
+            background: var(--white); border: 1px solid var(--border);
+            padding: 4px 13px; border-radius: 30px;
+            font-size: 0.74rem; color: var(--ink-soft);
+            transition: all 0.2s; cursor: default;
+        }
+        .skill-pill:hover { border-color: var(--green); color: var(--green); }
+
+        /* ── PORTFOLIO ── */
+        #portfolio { padding: 80px 0; background: var(--white); }
+        .section-header { margin-bottom: 52px; }
+        .section-eyebrow {
+            display: inline-block; font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--green);
+            background: var(--green-light); padding: 5px 14px; border-radius: 30px;
+            margin-bottom: 14px;
+        }
+        .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 600;
+            color: var(--ink); letter-spacing: -0.02em; line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .section-subtext {
+            font-size: 0.965rem; color: var(--ink-muted); max-width: 520px; line-height: 1.75;
+        }
+
+        /* Content design grid */
+        .content-category { margin-bottom: 52px; }
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem; font-weight: 600; color: var(--ink);
+            margin-bottom: 20px; padding-left: 16px;
+            border-left: 3px solid var(--green);
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+            gap: 16px;
+        }
+        .content-item {
+            background: var(--ivory); border: 1px solid var(--border);
+            border-radius: 10px; overflow: hidden; cursor: pointer;
+            transition: all 0.25s ease; text-decoration: none; display: block;
+        }
+        .content-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.09);
+            border-color: var(--green);
+        }
+        .content-thumb {
+            width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+        }
+        .content-info { padding: 10px 12px; }
+        .content-title {
+            font-size: 0.78rem; font-weight: 500; color: var(--ink); line-height: 1.3;
+        }
+        .content-caption { font-size: 0.7rem; color: var(--ink-muted); margin-top: 2px; }
+        .video-thumb { position: relative; }
+        .video-thumb::after {
+            content: '\f04b'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            color: white; background: rgba(0,0,0,0.55);
+            border-radius: 50%; padding: 10px 13px; font-size: 0.95rem;
+            pointer-events: none;
+        }
+
+        /* ── CONNECT ── */
+        #connect { padding: 80px 0; background: var(--ivory); }
+        .connect-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 64px; align-items: start;
+        }
+        .connect-left { padding-top: 8px; }
+        .connect-left h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 600;
+            color: var(--ink); line-height: 1.1; margin-bottom: 16px;
+        }
+        .connect-left p {
+            font-size: 0.965rem; color: var(--ink-muted); line-height: 1.85; margin-bottom: 32px;
+        }
+        .connect-details { margin-bottom: 32px; }
+        .connect-detail-item {
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 10px; font-size: 0.88rem; color: var(--ink-soft);
+        }
+        .connect-detail-item i { color: var(--green); width: 16px; text-align: center; }
+        .social-row { display: flex; gap: 10px; margin-top: 12px; }
+        .social-icon {
+            width: 42px; height: 42px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border); color: var(--ink-soft);
+            text-decoration: none; font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .social-icon:hover { background: var(--green); border-color: var(--green); color: white; transform: translateY(-2px); }
+
+        .contact-form-card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 16px; padding: 40px;
+        }
+        .contact-form-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem; font-weight: 600; color: var(--ink);
+            margin-bottom: 24px;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label {
+            display: block; font-size: 0.78rem; font-weight: 500;
+            color: var(--ink); margin-bottom: 6px; letter-spacing: 0.03em;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 11px 14px;
+            border: 1px solid var(--border); border-radius: 8px;
+            font-family: 'Jost', sans-serif; font-size: 0.88rem;
+            background: var(--ivory); color: var(--ink);
+            transition: border-color 0.2s; resize: vertical;
+        }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a99f; }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--green); background: var(--white);
+            box-shadow: 0 0 0 3px rgba(3,168,89,0.08);
+        }
+        .form-group textarea { min-height: 130px; }
+        .submit-btn {
+            width: 100%; padding: 13px;
+            background: var(--green); color: white;
+            border: none; border-radius: 8px;
+            font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 500;
+            cursor: pointer; display: flex; align-items: center;
+            justify-content: center; gap: 8px;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover { background: var(--green-hover); }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none; position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.93); justify-content: center; align-items: center;
+        }
+        .lightbox-content-wrapper {
+            position: relative; max-width: 90%; max-height: 90%;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .lightbox-content { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 6px; }
+        #lightbox-video { max-width: 100%; max-height: 80vh; border-radius: 6px; }
+        #lightbox-pdf { width: 780px; height: 80vh; border: none; }
+        .close {
+            position: absolute; top: -44px; right: 0;
+            color: rgba(255,255,255,0.8); font-size: 38px; font-weight: 300;
+            cursor: pointer; z-index: 1001; line-height: 1;
+            transition: color 0.2s;
+        }
+        .close:hover { color: white; }
+        .carousel-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: white; cursor: pointer;
+            background: rgba(255,255,255,0.12); border-radius: 50%;
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; transition: background 0.2s; z-index: 1001;
+        }
+        .carousel-arrow:hover { background: rgba(255,255,255,0.25); }
+        .carousel-arrow.left { left: -68px; }
+        .carousel-arrow.right { right: -68px; }
+        .carousel-arrow.hidden { display: none; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink); color: rgba(255,255,255,0.45);
+            text-align: center; padding: 28px 32px;
+            font-size: 0.8rem; letter-spacing: 0.03em;
+        }
+        footer span { color: var(--green); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .connect-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 64px; left: -100%; width: 100%;
+                background: var(--ivory); flex-direction: column;
+                align-items: center; padding: 28px 0; gap: 4px;
+                border-bottom: 1px solid var(--border); transition: left 0.3s ease;
+            }
+            .nav-links.open { left: 0; }
+            .container { padding: 0 20px; }
+            #about { padding: 56px 0 48px; }
+            #portfolio, #connect { padding: 56px 0; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form-card { padding: 28px 24px; }
+            .carousel-arrow.left { left: 10px; }
+            .carousel-arrow.right { right: 10px; }
+            .close { top: 10px; right: 10px; }
+            .content-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .about-single { padding: 0 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" onclick="showSection('about'); return false;">
+                Athiramol <span>PS</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about"     class="nav-link active" data-target="about">About</a></li>
+                <li><a href="#portfolio" class="nav-link"        data-target="portfolio">Portfolio</a></li>
+                <li><a href="#connect"   class="nav-link"        data-target="connect">Connect</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- ── ABOUT (updated bio, no image/stat cards, green theme) -->
+    <section id="about" class="active">
+        <div class="container">
+            <div class="about-single">
+                <span class="about-eyebrow">Digital Marketer & Content Strategist</span>
+                <h1 class="about-heading">Athiramol PS</h1>
+                
+                <div class="about-bio">
+                    <p>I currently work as a <strong>Digital Marketing Intern at Intelercs</strong>, where I support digital campaigns, content strategy, and online growth initiatives.</p>
+                    <p>I also volunteer as a <strong>Market Researcher at TESYouth</strong>, conducting topic-based research, validating datasets, and transforming information into structured insights. In addition, I serve as an <strong>Online Digital Marketer</strong> for TESYouth’s partner website, helping strengthen its digital presence and audience reach.</p>
+                    <p>As a <strong>Tableau DataDev Ambassador</strong>, I specialise in building user-centric dashboards using design thinking, colour psychology, and UX principles. I have also published research-backed work focused on emotional colour palettes and their impact on dashboard design.</p>
+                    <p>Previously, I worked as a <strong>Digital Marketing Assistant Manager in India</strong>, where I managed campaigns, SEO strategies, and content marketing initiatives that enhanced brand visibility and generated qualified leads.</p>
+                </div>
+
+                <div class="cta-row">
+                    <a href="https://www.linkedin.com/in/athiramolps/" target="_blank" class="btn-green">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    <a href="#connect" class="btn-ghost nav-link" data-target="connect">
+                        <i class="fas fa-envelope"></i> Get in touch
+                    </a>
+                </div>
+
+                <div class="skills-section">
+                    <div class="skills-label">Core skills</div>
+
+                    <div class="skills-group">
+                        <div class="skills-group-name"><i class="fas fa-bullhorn"></i> Digital Marketing</div>
+                        <div class="skills-pills">
+                            <span class="skill-pill">Google Analytics</span>
+                            <span class="skill-pill">Google Ads</span>
+                            <span class="skill-pill">SEMrush</span>
+                            <span class="skill-pill">Ahrefs</span>
+                            <span class="skill-pill">Meta Ads Manager</span>
+                            <span class="skill-pill">HubSpot</span>
+                            <span class="skill-pill">Mailchimp</span>
+                            <span class="skill-pill">Hootsuite</span>
+                            <span class="skill-pill">Buffer</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-group">
+                        <div class="skills-group-name"><i class="fas fa-paint-brush"></i> Design & Content</div>
+                        <div class="skills-pills">
+                            <span class="skill-pill">Canva</span>
+                            <span class="skill-pill">Adobe Suite</span>
+                            <span class="skill-pill">Figma</span>
+                            <span class="skill-pill">CapCut</span>
+                            <span class="skill-pill">WordPress</span>
+                            <span class="skill-pill">Copywriting</span>
+                            <span class="skill-pill">SEO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PORTFOLIO (content showcase unchanged) -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Work</span>
+                <h2 class="section-heading">Content Design Showcase</h2>
+                <p class="section-subtext">A curated collection of creative work — social media posts, videos, marketing collaterals, copywriting, strategy, and more.</p>
+            </div>
+            <div id="content-design-grid"></div>
+        </div>
+    </section>
+
+    <!-- ── CONNECT (green theme, location Durham, updated social links) -->
+    <section id="connect">
+        <div class="container">
+            <div class="connect-grid">
+                <div class="connect-left">
+                    <span class="section-eyebrow">Let's talk</span>
+                    <h2>Connect with me</h2>
+                    <p>Available for freelance projects, collaborations, or full-time opportunities. Let's discuss how I can help your brand grow through data-driven marketing and compelling content strategy.</p>
+
+                    <div class="connect-details">
+                        <div class="connect-detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Durham, United Kingdom</span>
+                        </div>
+                    </div>
+
+                    <div class="social-row">
+                        <a href="https://www.linkedin.com/in/athiramolps/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/athiramolps" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://public.tableau.com/app/profile/athiramol.ps/vizzes" target="_blank" class="social-icon" title="Tableau"><i class="fas fa-chart-bar"></i></a>
+                        <a href="https://www.youtube.com/@AthysDataDive" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <h3>Send a message</h3>
+                    <form id="contactForm" action="https://formspree.io/f/xqaykvkd" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="How can I help?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content-wrapper">
+            <span class="close" onclick="closeLightbox(event)">&times;</span>
+            <div class="carousel-arrow left hidden" onclick="prevItem(event)"><i class="fas fa-chevron-left"></i></div>
+            <div class="carousel-arrow right hidden" onclick="nextItem(event)"><i class="fas fa-chevron-right"></i></div>
+            <img class="lightbox-content" id="lightbox-img" style="display:none;" alt="Preview">
+            <video id="lightbox-video" class="lightbox-content" controls style="display:none;"></video>
+            <iframe id="lightbox-pdf" class="lightbox-content" style="display:none;" title="PDF Preview"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer with updated title -->
+    <footer>
+        <p>Designed with care &nbsp;·&nbsp; <span>Athiramol PS</span> &nbsp;·&nbsp; Digital Marketer & Content Strategist</p>
+    </footer>
+
+    <script>
+    // Navigation and lightbox (same logic as before, fully functional)
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinksContainer = document.getElementById('navLinks');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.dataset.target || this.getAttribute('href').replace('#','');
+                if (!targetId) return;
+                showSection(targetId);
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll(`.nav-link[data-target="${targetId}"]`).forEach(l => l.classList.add('active'));
+                if (navLinksContainer.classList.contains('open')) navLinksContainer.classList.remove('open');
+            });
+        });
+
+        menuToggle.addEventListener('click', function() {
+            navLinksContainer.classList.toggle('open');
+        });
+
+        buildContentShowcase();
+    });
+
+    function showSection(id) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById(id);
+        if (target) target.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    // Lightbox carousel (unchanged)
+    let currentCarouselItems = [], currentIndex = 0, allowArrows = false;
+    function openLightbox(src, type) {
+        currentCarouselItems = [{ src, type }];
+        currentIndex = 0; allowArrows = false;
+        displayCurrentItem();
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function openCarousel(items, startIndex, enableArrows) {
+        startIndex = startIndex || 0;
+        if (enableArrows === undefined) enableArrows = true;
+        currentCarouselItems = items; currentIndex = startIndex;
+        allowArrows = enableArrows && items.length > 1;
+        displayCurrentItem();
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function displayCurrentItem() {
+        var item = currentCarouselItems[currentIndex];
+        var img   = document.getElementById('lightbox-img');
+        var video = document.getElementById('lightbox-video');
+        var pdf   = document.getElementById('lightbox-pdf');
+        var leftArrow  = document.querySelector('.carousel-arrow.left');
+        var rightArrow = document.querySelector('.carousel-arrow.right');
+        img.style.display = video.style.display = pdf.style.display = 'none';
+        if (item.type === 'image')      { img.src   = item.src; img.style.display   = 'block'; }
+        else if (item.type === 'video') { video.src = item.src; video.style.display = 'block'; }
+        else if (item.type === 'pdf')   { pdf.src   = item.src; pdf.style.display   = 'block'; }
+        if (allowArrows && currentCarouselItems.length > 1) {
+            leftArrow.classList.remove('hidden'); rightArrow.classList.remove('hidden');
+        } else {
+            leftArrow.classList.add('hidden'); rightArrow.classList.add('hidden');
+        }
+    }
+    function prevItem(e) { if (e) e.stopPropagation(); if (currentCarouselItems.length > 1) { currentIndex = (currentIndex - 1 + currentCarouselItems.length) % currentCarouselItems.length; displayCurrentItem(); } }
+    function nextItem(e) { if (e) e.stopPropagation(); if (currentCarouselItems.length > 1) { currentIndex = (currentIndex + 1) % currentCarouselItems.length; displayCurrentItem(); } }
+    function closeLightbox(e) { if (e) e.stopPropagation(); var video = document.getElementById('lightbox-video'); var pdf = document.getElementById('lightbox-pdf'); if (video) video.pause(); if (pdf) pdf.src = ''; document.getElementById('lightbox').style.display = 'none'; }
+    document.getElementById('lightbox-video').addEventListener('click', function(e) { e.stopPropagation(); });
+    document.querySelector('.carousel-arrow.left').addEventListener('click',  function(e) { e.stopPropagation(); });
+    document.querySelector('.carousel-arrow.right').addEventListener('click', function(e) { e.stopPropagation(); });
+
+    // Content data (same as original)
+    var brandingItems = [
+        { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/DUAL.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/DUAL.png', title:'DUAL' },
+        { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/YouTube%20Channel%20Subscribe%20Page.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/YouTube%20Channel%20Subscribe%20Page.png', title:'YouTube Subscribe Page' },
+        { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/Youtube%20Logo.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/Youtube%20Logo.png', title:'YouTube Logo' },
+        { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/banner.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/banner.png', title:'Banner' },
+        { type:'video', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/thank%20you-last%20part%202.mp4', thumb:'https://via.placeholder.com/200x150?text=Thank+You+Video', title:'Thank You Video' },
+        { type:'video', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/branding/welcome.mp4', thumb:'https://via.placeholder.com/200x150?text=Welcome+Video', title:'Welcome Video' }
+    ];
+    var contentItems = [
+        { category:'Social Media Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Candle-%20Post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Candle-%20Post.png', title:'Candle Post' },
+        { category:'Social Media Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Blog%20Post%20Mock%20up.png', title:'Blog Post' },
+        { category:'Social Media Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/FB%20Square%20post-%20Webinar.png', title:'Facebook Post — Webinar' },
+        { category:'Social Media Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/_Testimonials%20Instagram%20Post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/_Testimonials%20Instagram%20Post.png', title:'Testimonials Instagram Post' },
+        { category:'Social Media Posts', type:'carousel', items:[
+            { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/1.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/1.png', title:'Carousel 1' },
+            { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/2.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/2.png', title:'Carousel 2' },
+            { type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/3.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/3.png', title:'Carousel 3' }
+        ], title:'Carousel Post', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/1.png' },
+        { category:'Social Media Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Instagram%20-%20Poll.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/socialposts/Instagram%20-%20Poll.png', title:'Instagram Poll' },
+        { category:'Videos', type:'video', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Youtube%20Video-2.mp4', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/6.png', title:'Candle Making YouTube Video' },
+        { category:'Videos', type:'video', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Ads-Video%20Ad.mp4', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Ads-Video%20Ad.png', title:'Candle Ad Instagram Video' },
+        { category:'Videos', type:'video', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/Insta%20Reels.mp4', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/videos/2.png', title:'Candle Reel' },
+        { category:'Marketing Collaterals', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Email%20Newsletter%20(1).png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Email%20Newsletter%20(1).png', title:'Email Newsletter' },
+        { category:'Marketing Collaterals', type:'image', src:"https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png", thumb:"https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Anna%E2%80%99s%20Boutique.png", title:"Anna's Boutique" },
+        { category:'Marketing Collaterals', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Flyer.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/collaterals/Flyer.png', title:'Flyer' },
+        { category:'Vacancy Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Hiring%20LinkedIn%20Post%20(1).png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Hiring%20LinkedIn%20Post%20(1).png', title:'Hiring LinkedIn Post' },
+        { category:'Vacancy Posts', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Marketing%20Internship%20Program%20Instagram%20Post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/vacancyposts/Marketing%20Internship%20Program%20Instagram%20Post.png', title:'Marketing Internship Program' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Email%20Newsletter.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Email%20Newsletter.png', title:'Email Newsletter' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Hiring%20LinkedIn%20Post%20(1).png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Hiring%20LinkedIn%20Post%20(1).png', title:'Hiring LinkedIn Post' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Instagram%20-%20Poll.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Instagram%20-%20Poll.png', title:'Instagram Poll' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/MAEVE-Instagram%20post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/MAEVE-Instagram%20post.png', title:'MAEVE Instagram Post' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Perfume-post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Perfume-post.png', title:'Perfume Post' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-%20Facebook%20Post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-%20Facebook%20Post.png', title:'Redmagic Facebook Post' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-Instagram%20Post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/Redmagic-Instagram%20Post.png', title:'Redmagic Instagram Post' },
+        { category:'Copywriting', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/_Testimonials%20Instagram%20Post.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/copywriting/_Testimonials%20Instagram%20Post.png', title:'Testimonials Instagram Post' },
+        { category:'Strategy', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Social%20Media%20Content%20Calendar.png', title:'Social Media Content Calendar' },
+        { category:'Strategy', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Persona.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/strategy/Persona.png', title:'Persona' },
+        { category:'Branding', type:'carousel', items:brandingItems, title:'YouTube Branding', caption:'Click to view all branding assets', thumb:brandingItems[0].thumb },
+        { category:'Visual Design', type:'image', src:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/visualdesign/Recycling%20Process%20Infographic.png', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/content%20crreation/content/visualdesign/Recycling%20Process%20Infographic.png', title:'Recycling Process Infographic' },
+        { category:'Performance Insights', type:'external-link', title:'Web Traffic Dashboard', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Dashboard%201%20(2).png', url:'https://public.tableau.com/app/profile/athiramol.ps/viz/WebTrafficDashboard_17394143094640/Dashboard12' },
+        { category:'Performance Insights', type:'external-link', title:'Digital Marketing KPI Dashboard', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Digital%20Marketing%20KPI%20Dashboard.png', url:'https://public.tableau.com/app/profile/athiramol.ps/viz/Marketing_KPIDashboard/DigitalMarketingKPIDashboard' },
+        { category:'Performance Insights', type:'external-link', title:'Email Campaign Executive Dashboard', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tab/Dashboard%201-2.png', url:'https://public.tableau.com/app/profile/athiramol.ps/viz/ExecutiveDashboardMarketingEmailCampaignPerformance/Dashboard1' },
+        { category:'Performance Insights', type:'external-link', title:'Ecommerce Sales & Marketing Dashboard', thumb:'https://raw.githubusercontent.com/athiramolps/athiramolps.github.io/main/tableau/Dashboard%201.png', url:'https://public.tableau.com/app/profile/athiramol.ps/viz/E-CommerceDashboard_17400989469420/Dashboard1' }
+    ];
+    function buildContentShowcase() {
+        var container = document.getElementById('content-design-grid');
+        if (!container) return;
+        var grouped = {};
+        contentItems.forEach(function(item) { if (!grouped[item.category]) grouped[item.category] = []; grouped[item.category].push(item); });
+        var categoryOrder = ['Social Media Posts','Videos','Marketing Collaterals','Vacancy Posts','Copywriting','Strategy','Branding','Visual Design','Performance Insights'];
+        var html = '';
+        categoryOrder.forEach(function(category) {
+            if (!grouped[category]) return;
+            html += '<div class="content-category"><h3 class="category-title">' + category + '</h3><div class="content-grid">';
+            grouped[category].forEach(function(item) {
+                var enableArrows = (category === 'Branding' && item.title === 'YouTube Branding') || (category === 'Social Media Posts' && item.title === 'Carousel Post');
+                if (item.type === 'carousel') {
+                    html += '<div class="content-item" onclick="openCarousel(' + JSON.stringify(item.items).replace(/"/g,'&quot;') + ', 0, ' + enableArrows + ')">'
+                          + '<img src="' + item.thumb + '" alt="' + item.title + '" class="content-thumb">'
+                          + '<div class="content-info"><div class="content-title">' + item.title + '</div>'
+                          + (item.caption ? '<div class="content-caption">' + item.caption + '</div>' : '')
+                          + '</div></div>';
+                } else if (item.type === 'external-link') {
+                    html += '<a href="' + item.url + '" target="_blank" class="content-item">'
+                          + '<img src="' + item.thumb + '" alt="' + item.title + '" class="content-thumb">'
+                          + '<div class="content-info"><div class="content-title">' + item.title + '</div></div></a>';
+                } else {
+                    html += '<div class="content-item' + (item.type === 'video' ? ' video-thumb' : '') + '" onclick="openLightbox(\'' + item.src + '\',\'' + item.type + '\')">'
+                          + '<img src="' + item.thumb + '" alt="' + item.title + '" class="content-thumb">'
+                          + '<div class="content-info"><div class="content-title">' + item.title + '</div></div></div>';
+                }
+            });
+            html += '</div></div>';
+        });
+        container.innerHTML = html;
+    }
+    </script>
+</body>
+</html>
